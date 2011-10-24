@@ -126,10 +126,13 @@ Therefore we grant `discounts` for the current customer if he does connect with 
         landing_page : "https://shop.example.com/item/2",
         image_url    : "http://assets.example.com/item/2.png" 
       }
-    ]
+    ],
+    order_id : "shops_order_number",
+    
+    }
     
 ### Example Response
 
 
+### Example Error
 
-### Example Error    
