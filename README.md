@@ -133,6 +133,18 @@ Therefore we grant `discounts` for the current customer if he does connect with 
     
 ### Example Response
 
+    {
+      "token" : "tok_haesohphaiyee3see5taen3ioJaTo"
+    }
+
 
 ### Example Error
 
+    {
+      "error": {
+        "type": "invalid_request_error",
+        "message": "Invalid price: teuer"
+        "code": "incorrect_number",
+        "param": "number",
+      }
+    }
