@@ -15,6 +15,19 @@ If you have any questions or need any technical support, please contact Jan Riet
 * publishable: pk_ifYd4fH3ld7WYkoPBpCMU94cVO63S
 * secret: 2pHIRimRYgg9wgUeIUdDyoF0UxbT2iQK
 
+## HTTP Status Code Summary
+
+**200** OK - Everything worked as expected.
+
+**400** Bad Request - Often missing a required parameter.
+
+**401** Unauthorized - No valid API key provided.
+
+**402** Request Failed - Parameters were valid but request failed.
+
+**404** Not Found - The requested item doesn't exist.
+
+**500, 502, 503, 504** Server errors - something went wrong on bonusbox's end.
 
 ## Creating a new achievement
 
