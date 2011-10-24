@@ -134,9 +134,9 @@ Therefore we grant `discounts` for the current customer if he does connect with 
 ### Example Response
 
     {
-      "token" : "tok_haesohphaiyee3see5taen3ioJaTo"
+      "token" : "tok_haesohphaiyee3see5taen3ioJaTo",
+      "url"   : "https://api.bonusbox.me/merchant/pk_G2q9mfVNHHK0jxwUXGBY8y1mzibC4/user/tok_haesohphaiyee3see5taen3ioJaTo"
     }
-
 
 ### Example Error
 
