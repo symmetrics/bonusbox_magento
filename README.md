@@ -26,19 +26,38 @@ Therefore we grant `discounts` for the current customer if he does connect with 
     POST https://api.bonusbox.me/tokens
 
 ### Example request
-
-    discounts: [{
-      token       : "Winter 2011",
+    adresses: [
+      { code : "billing",
+        city : "Berlin",
+        company : "Example GmbH",
+        country: "Germany",
+        email : "customer@example.com",
+        first_name: "Bob",
+        last_name : "Customer",
+        phone : "111111111",
+        street: "Mindener Strasse 20",
+        zip: "10589" }, 
+      { code : "shipping",
+        city : "Berlin",
+        country: "Germany",
+        email : "customer@example.com",
+        first_name: "Bob",
+        last_name : "Customer",
+        phone : "111111111",
+        street: "Gipsstrasse 5",
+        zip: "10117" }
+    ],
+    discounts: [
+    { token       : "Winter 2011",
       expires_at  : "2012-02-28",
       title       : "Winterfest bei Shop",
-      description : "Alle Winterprodukte fuer 15% Rabatt",
-    },{
-      token       : "Winter 2011 bei Alzando",
+      description : "Alle Winterprodukte fuer 15% Rabatt" }, 
+    { token       : "Winter 2011 bei Alzando",
       expires_at  : "2012-02-28",
       title       : "Winterfest bei Alzando,
       description : "Alle Winterprodukte fuer 15% Rabatt bei Alzando",
-      app_id      : "SOME_OTHER_APPID_USING_BONUSBOX"
-    }],
+      app_id      : "SOME_OTHER_APPID_USING_BONUSBOX" }
+    ],
     discounts_used: ["Autumn 2011"],
     items : [
       { sku          : 1,
@@ -58,29 +77,10 @@ Therefore we grant `discounts` for the current customer if he does connect with 
         total_price  : 4000,
         grand_total  : 4760,
         landing_page : "https://shop.example.com/item/2",
-        image_url    : "http://assets.example.com/item/2.png" }
-    ],
-    adresses: [
-      { code : "billing",
-        city : "Berlin",
-        company : "Example GmbH",
-        country: "Germany",
-        email : "customer@example.com",
-        first_name: "Bob",
-        last_name : "Customer",
-        phone : "111111111",
-        street: "Gipsstrasse 5",
-        zip: "10117" }, 
-      { code : "shipping",
-        city : "Berlin",
-        country: "Germany",
-        email : "customer@example.com",
-        first_name: "Bob",
-        last_name : "Customer",
-        phone : "111111111",
-        street: "Gipsstrasse 5",
-        zip: "10117" }]
-
+        image_url    : "http://assets.example.com/item/2.png" 
+      }
+    ]
+    
 ### Example Response
 
 
