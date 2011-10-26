@@ -127,7 +127,9 @@ Therefore we grant `discounts` for the current customer if he does connect with 
         image_url    : "http://assets.example.com/item/2.png" 
       }
     ],
-      order_number : "shops_order_number"
+      order_number : "shops_order_number",
+      new_user_text : "Sichere dir %{{CREDITS:ACHIEVED}}% Bonusbox-Punkte und einen Gutschein fuer deinen naechsten Einkauf!\n\n%{{FACEBOOK:LOGIN}}%",
+      bonusbox_user_text: "Du hast fuer deinen Einkauf %{{CREDITS:ACHIEVED}} Punkte bekommen. Die fehlen noch %{{CREDITS:LEVELUP}} um den naechsten %{{BADGE:LEVELUP}} zu erreichen.\n\n%{{BONUSBOX:APP:[$caption=Hier geht es zu deinen Bonusbox Rabatten]}}"
     }
     
 ### Example Response
@@ -142,8 +144,8 @@ Therefore we grant `discounts` for the current customer if he does connect with 
     {
       "error": {
         "type": "invalid_request_error",
-        "message": "Invalid price: teuer"
-        "code": "incorrect_number",
-        "param": "number",
+        "message": "You have to add at least one item.",
+        "code": "item_missing",
+        "param": "items",
       }
     }
