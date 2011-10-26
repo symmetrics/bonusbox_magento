@@ -9,7 +9,7 @@ If you have any questions or need any technical support, please contact Jan Riet
 
 ## Summary of Resource URL Patterns
 
-**/tokens**
+**/success_pages**
 
 ## Errors
 
@@ -62,14 +62,14 @@ All API requests must be made over [HTTPS](http://en.wikipedia.org/wiki/HTTP_Sec
 
 **500, 502, 503, 504** Server errors - something went wrong on bonusbox's end.
 
-## Creating a new achievement
+## Creating a new success page
 
 We assume, visiting the success page means a payment has been triggered.
 Therefore we grant `discounts` for the current customer if he does connect with bonusbox for his next shopping experience.
 
 ### Definition
 
-    POST https://api.bonusbox.me/tokens
+    POST https://api.bonusbox.me/success_pages
 
 ### Example request
 
@@ -101,7 +101,7 @@ Therefore we grant `discounts` for the current customer if he does connect with 
       description : "Alle Winterprodukte fuer 15% Rabatt" }, 
     { token       : "Winter 2011 bei Alzando",
       expires_at  : "2012-02-28",
-      title       : "Winterfest bei Alzando,
+      title       : "Winterfest bei Alzando",
       description : "Alle Winterprodukte fuer 15% Rabatt bei Alzando",
       app_id      : "SOME_OTHER_APPID_USING_BONUSBOX" }
     ],
@@ -127,8 +127,7 @@ Therefore we grant `discounts` for the current customer if he does connect with 
         image_url    : "http://assets.example.com/item/2.png" 
       }
     ],
-    order_id : "shops_order_number",
-    
+      order_number : "shops_order_number"
     }
     
 ### Example Response
