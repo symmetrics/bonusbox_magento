@@ -7,6 +7,14 @@ If you have any questions or need any technical support, please contact Jan Riet
 
 **https://api.bonusbox.me/**
 
+## API Version
+
+When you want to call the API, you need to specify the Accept header like this :
+
+    application/json,application/vnd.api;ver=1
+
+Otherwise the resource is not accessible and will result in a `404`.
+
 ## Summary of Resource URL Patterns
 
 **/success_pages**
@@ -71,67 +79,95 @@ Therefore we grant `discounts` for the current customer if he does connect with 
 
     POST https://api.bonusbox.me/success_pages
 
-### Example request
+### Example requests
 
-    adresses: [
-      { code : "billing",
-        city : "Berlin",
-        company : "Example GmbH",
-        country: "Germany",
-        email : "customer@example.com",
-        first_name: "Bob",
-        last_name : "Customer",
-        phone : "111111111",
-        street: "Mindener Strasse 20",
-        zip: "10589" }, 
-      { code : "shipping",
-        city : "Berlin",
-        country: "Germany",
-        email : "customer@example.com",
-        first_name: "Bob",
-        last_name : "Customer",
-        phone : "111111111",
-        street: "Gipsstrasse 5",
-        zip: "10117" }
-    ],
-    discounts: [
-    { token       : "Winter 2011",
-      expires_at  : "2012-02-28",
-      title       : "Winterfest bei Shop",
-      description : "Alle Winterprodukte fuer 15% Rabatt" }, 
-    { token       : "Winter 2011 bei Alzando",
-      expires_at  : "2012-02-28",
-      title       : "Winterfest bei Alzando",
-      description : "Alle Winterprodukte fuer 15% Rabatt bei Alzando",
-      app_id      : "SOME_OTHER_APPID_USING_BONUSBOX" }
-    ],
-    discounts_used: ["Autumn 2011"],
-    items : [
-      { sku          : 1,
-        price        : 2000,
-        quantity     : 1,
-        code         : "shipping",
-        vat_rate     : "19%",
-        vat_amount   : 380,
-        total_price  : 2000,
-        grand_total  : 2380 }, 
-      { sku          : 1,
-        price        : 2000,
-        quantity     : 2,
-        code         : "item",
-        vat_rate     : "19%",
-        vat_amount   : 380,
-        total_price  : 4000,
-        grand_total  : 4760,
-        landing_page : "https://shop.example.com/item/2",
-        image_url    : "http://assets.example.com/item/2.png" 
+    curl -H "Accept: application/json,application/vnd.api;ver=1" \
+         -X POST http://localhost:3000/success_pages \
+         -H "Content-Type: application/json" \
+         -u pk_G2q9mfVNHHK0jxwUXGBY8y1mzibC4: \
+         -d '{"items": [{ "sku":"123", "quantity":1, "code":"shipping", "price":"2000", "grand_total":"2380" }]}'
+
+### Arguments
+
+All arguments are passed via one JSON-Object. Supported arguments are:
+
+* `addresses`          (optional)
+ - data for location based recommendations.
+* `bonusbox_user_text` (optional)
+ - iFrame text displayed for a logged in bonusbox customer.
+* `discounts`          (optional)
+ - used to incentivize the customer with discount-codes
+* `discounts_used`     (optional)
+ - feedback which discounts have been used during this checkout.
+* `items`              (mandatory)
+ - customer's cart items (products, fees, ...)
+* `new_user_text`      (optional)
+ - iFrame text displayed for a user, not yet logged in to facebook (may be bonusbox_customer) or logged in facebook user without the bonusbox app installed.
+* `order_number`       (optional)
+ - for your tracking
+
+One huge example (TODO: documentation for each value separately)
+
+    { adresses: [
+        { code : "billing",
+          city : "Berlin",
+          company : "Example GmbH",
+          country: "Germany",
+          email : "customer@example.com",
+          first_name: "Bob",
+          last_name : "Customer",
+          phone : "111111111",
+          street: "Mindener Strasse 20",
+          zip: "10589" }, 
+        { code : "shipping",
+          city : "Berlin",
+          country: "Germany",
+          email : "customer@example.com",
+          first_name: "Bob",
+          last_name : "Customer",
+          phone : "111111111",
+          street: "Gipsstrasse 5",
+          zip: "10117" }
+      ],
+      discounts: [
+      { token       : "Winter 2011",
+        expires_at  : "2012-02-28",
+        title       : "Winterfest bei Shop",
+        description : "Alle Winterprodukte fuer 15% Rabatt" }, 
+      { token       : "Winter 2011 bei Alzando",
+        expires_at  : "2012-02-28",
+        title       : "Winterfest bei Alzando",
+        description : "Alle Winterprodukte fuer 15% Rabatt bei Alzando",
+        app_id      : "SOME_OTHER_APPID_USING_BONUSBOX" }
+      ],
+      discounts_used: ["Autumn 2011"],
+      items : [
+        { sku          : 1,
+          price        : 2000,
+          quantity     : 1,
+          code         : "shipping",
+          vat_rate     : "19%",
+          vat_amount   : 380,
+          total_price  : 2000,
+          grand_total  : 2380 }, 
+        { sku          : 1,
+          price        : 2000,
+          quantity     : 2,
+          code         : "item",
+          vat_rate     : "19%",
+          vat_amount   : 380,
+          total_price  : 4000,
+          grand_total  : 4760,
+          landing_page : "https://shop.example.com/item/2",
+          image_url    : "http://assets.example.com/item/2.png" 
+        }
+      ],
+        order_number : "shops_order_number",
+        new_user_text : "Sichere dir %{{CREDITS:ACHIEVED}}% Bonusbox-Punkte und einen Gutschein fuer deinen naechsten Einkauf!\n\n%{{FACEBOOK:LOGIN}}%",
+        bonusbox_user_text: "Du hast fuer deinen Einkauf %{{CREDITS:ACHIEVED}} Punkte bekommen. Die fehlen noch %{{CREDITS:LEVELUP}} um den naechsten %{{BADGE:LEVELUP}} zu erreichen.\n\n%{{BONUSBOX:APP:[$caption=Hier geht es zu deinen Bonusbox Rabatten]}}"
       }
-    ],
-      order_number : "shops_order_number",
-      new_user_text : "Sichere dir %{{CREDITS:ACHIEVED}}% Bonusbox-Punkte und einen Gutschein fuer deinen naechsten Einkauf!\n\n%{{FACEBOOK:LOGIN}}%",
-      bonusbox_user_text: "Du hast fuer deinen Einkauf %{{CREDITS:ACHIEVED}} Punkte bekommen. Die fehlen noch %{{CREDITS:LEVELUP}} um den naechsten %{{BADGE:LEVELUP}} zu erreichen.\n\n%{{BONUSBOX:APP:[$caption=Hier geht es zu deinen Bonusbox Rabatten]}}"
     }
-    
+
 ### Example Response
 
     {
