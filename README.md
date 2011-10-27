@@ -129,17 +129,11 @@ One huge example (TODO: documentation for each value separately)
           street: "Gipsstrasse 5",
           zip: "10117" }
       ],
-      discounts: [
-      { token       : "Winter 2011",
+      discount : {
+        token       : "Winter 2011",
         expires_at  : "2012-02-28",
         title       : "Winterfest bei Shop",
-        description : "Alle Winterprodukte fuer 15% Rabatt" }, 
-      { token       : "Winter 2011 bei Alzando",
-        expires_at  : "2012-02-28",
-        title       : "Winterfest bei Alzando",
-        description : "Alle Winterprodukte fuer 15% Rabatt bei Alzando",
-        app_id      : "SOME_OTHER_APPID_USING_BONUSBOX" }
-      ],
+      },
       discounts_used: ["Autumn 2011"],
       items : [
         { sku          : 1,
