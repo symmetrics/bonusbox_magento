@@ -169,10 +169,12 @@ One huge example (TODO: documentation for each value separately)
     }
 
 ### Example Response
-
+    
     {
-      "token" : "tok_haesohphaiyee3see5taen3ioJaTo",
-      "url"   : "https://api.bonusbox.me/merchant/pk_G2q9mfVNHHK0jxwUXGBY8y1mzibC4/user/tok_haesohphaiyee3see5taen3ioJaTo"
+      "success_page" : {
+        "url"  : "https://api.bonusbox.me/8WrIpkogSj78OkKdBw0eqOtJMPg7woCCDv8JsA-51pI",
+        "token" :"8WrIpkogSj78OkKdBw0eqOtJMPg7woCCDv8JsA-51pI"
+      }
     }
 
 ### Example Error
