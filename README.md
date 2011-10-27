@@ -99,7 +99,7 @@ All arguments are passed via one JSON-Object. Supported arguments are:
  - used to incentivize the customer with discount-codes
 * `discounts_used`     (optional)
  - feedback which discounts have been used during this checkout.
-* `items`              (mandatory)
+* `items`              (**mandatory**)
  - customer's cart items (products, fees, ...)
 * `new_user_text`      (optional)
  - iFrame text displayed for a user, not yet logged in to facebook (may be bonusbox_customer) or logged in facebook user without the bonusbox app installed.
