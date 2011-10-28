@@ -156,6 +156,7 @@ One huge example (TODO: documentation for each value separately)
         }
       ],
         order_number : "shops_order_number",
+        style_url    : "http://example.com/link_to_your_style.css"
         new_user_text : "Sichere dir %{{CREDITS:ACHIEVED}}% Bonusbox-Punkte und einen Gutschein fuer deinen naechsten Einkauf!\n\n%{{FACEBOOK:LOGIN}}%",
         bonusbox_user_text: "Du hast fuer deinen Einkauf %{{CREDITS:ACHIEVED}} Punkte bekommen. Die fehlen noch %{{CREDITS:LEVELUP}} um den naechsten %{{BADGE:LEVELUP}} zu erreichen.\n\n%{{BONUSBOX:APP:[$caption=Hier geht es zu deinen Bonusbox Rabatten]}}"
       }
