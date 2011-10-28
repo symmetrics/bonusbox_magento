@@ -174,10 +174,5 @@ One huge example (TODO: documentation for each value separately)
 ### Example Error
 
     {
-      "error": {
-        "type": "invalid_request_error",
-        "message": "You have to add at least one item.",
-        "code": "item_missing",
-        "param": "items",
-      }
+      "items": ["You have to add at least one item."]
     }
