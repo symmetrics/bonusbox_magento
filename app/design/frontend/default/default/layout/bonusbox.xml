@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<layout version="0.1.0">
+    <checkout_onepage_success>
+        <reference name="content">
+            <block type="bonusbox/checkout_success" name="bonusbox.checkout_success" />
+        </reference>
+    </checkout_onepage_success>
+</layout>

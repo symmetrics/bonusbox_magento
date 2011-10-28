@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config>
+  <modules>
+    <Bonusbox_Bonusbox>
+      <active>true</active>
+      <codePool>community</codePool>
+    </Bonusbox_Bonusbox>
+  </modules>
+</config>

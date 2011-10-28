@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+	<modules>
+		<bonusbox_bonusbox>
+			<version>0.1.0</version>	
+		</bonusbox_bonusbox>
+	</modules>
+	<global>
+		<models>
+			<bonusbox>
+				<class>Bonusbox_Bonusbox_Model</class>		
+			</bonusbox>
+		</models>
+		<helpers>
+			<bonusbox>
+				<class>Bonusbox_Bonusbox_Helper</class>		
+			</bonusbox>
+		</helpers>
+		<blocks>
+			<bonusbox>
+                <class>Bonusbox_Bonusbox_Block</class>
+            </bonusbox>
+			<checkout>
+				<rewrite>
+					<onepage_success>Bonusbox_Bonusbox_Block_Checkout_Onepage_Success</onepage_success>
+				</rewrite>
+			</checkout>
+		</blocks>
+
+		<resources>
+            <bonusbox_setup>
+                <setup><module>Bonusbox_Bonusbox</module></setup>
+                <connection><use>core_setup</use></connection>
+            </bonusbox_setup>
+            <bonusbox_write>
+                <connection><use>core_write</use></connection>
+            </bonusbox_write>
+            <bonusbox_read>
+               <connection><use>core_read</use></connection>
+            </bonusbox_read>
+        </resources>
+    </global>
+	
+	<frontend>
+		<routers>
+            <bonusbox_test>
+                <use>standard</use>
+                <args>
+                    <module>Bonusbox_Bonusbox</module>
+                    <frontName>bonusbox</frontName>
+                </args>
+            </bonusbox_test>
+		</routers>
+		
+		<layout>
+            <updates>
+                <swedishsnus>
+                    <file>bonusbox.xml</file>
+                </swedishsnus>
+            </updates>
+        </layout>
+	</frontend>
+	
+	<adminhtml>
+        <acl>
+            <resources>
+                <admin>
+                    <children>
+                        <system>
+                            <children>
+                                <config>
+                                    <children>
+                                        <bonusbox translate="title" module="bonusbox">
+                                            <title>Bonusbox</title>
+                                        </bonusbox>
+                                    </children>
+                                </config>
+                            </children>
+                        </system>
+                        <bonusbox>
+                            <title>Bonusbox</title>
+                            <sort_order>71</sort_order>
+                            <children>
+                                <bonusbox translate="title" module="bonusbox">
+                                    <title>Config</title>
+                                    <sort_order>0</sort_order>
+                                </bonusbox>
+                            </children>
+                        </bonusbox>
+                    </children>
+                </admin>
+            </resources>
+        </acl>
+        <translate>
+            <modules>
+                <bonusbox_bonusbox>
+                    <files>
+                        <default>bonusbox_admin.csv</default>
+                    </files>
+                </bonusbox_bonusbox>
+            </modules>
+        </translate>
+	</adminhtml>
+	
+	<default>
+        <bonusbox>        
+            <general>
+                <enabled>0</enabled>
+                <live>0</live>
+        		
+        		<url><![CDATA[https://api.bonusbox.me/]]></url>
+        		<accept_header><![CDATA[application/json,application/vnd.api;ver=1]]></accept_header>
+        		<debug_email><![CDATA[dittmar@vivomedia.de]]></debug_email>
+            </general>
+			<success_page>
+	            <new_user_text>Sichere dir %{{CREDITS:ACHIEVED}}% Bonusbox-Punkte und einen Gutschein für deinen nächsten Einkauf! 
+
+%{{FACEBOOK:LOGIN}}%</new_user_text>
+    	        <bonusbox_user_text>Du hast für deinen Einkauf %{{CREDITS:ACHIEVED}}% Punkte bekommen. Die fehlen noch %{{CREDITS:LEVELUP}}% um den naechsten %{{BADGE:LEVELUP}}% zu erreichen.
+
+%{{BONUSBOX:APP:[$caption=Hier geht es zu deinen Bonusbox Rabatten]}}%</bonusbox_user_text>
+			</success_page>
+        </bonusbox>
+    </default> 
+</config>
