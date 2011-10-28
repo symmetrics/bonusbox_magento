@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<config>
+    <global>
+        <install>
+            <date><![CDATA[Thu, 08 Oct 2009 14:56:45 +0000]]></date>
+        </install>
+        <crypt>
+            <key><![CDATA[de9a4c7e814f5a3bb24fd2211343d59a]]></key>
+        </crypt>
+        <resources>
+            <default_setup>
+                <connection>
+                    <host><![CDATA[localhost]]></host>
+                    <username><![CDATA[root]]></username>
+                    <password><![CDATA[]]></password>
+                    <dbname><![CDATA[magento_1xyz]]></dbname>
+                </connection>
+            </default_setup>
+        </resources>
+    </global>
+</config>
