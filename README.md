@@ -48,13 +48,13 @@ All API requests must be made over [HTTPS](http://en.wikipedia.org/wiki/HTTP_Sec
 
 ### Test
 
-* publishable: pk_G2q9mfVNHHK0jxwUXGBY8y1mzibC4
-* secret: F6PABG8JYBRpEMoPIDyzgB8iz0Z8Vho2
+* publishable: `pk_QscRNyat69EeAepXO02_VQARNhu93GpTlFhu-K`
+* secret:      `kMBwsrKzdHS3OInejS6fvmPXW8Uz3Bg_embNF3SEcqI`
   
 ### Live
 
-* publishable: pk_ifYd4fH3ld7WYkoPBpCMU94cVO63S
-* secret: 2pHIRimRYgg9wgUeIUdDyoF0UxbT2iQK
+* publishable: `pk_dLLVDMFnoH7W0UDiaZ5C7gIQQ7wCr1Y2i4D6vFM`
+* secret:      `KhDeR2ATjmhd_C8WjKNMBCO-54-Fz3Q8IGvi_a8fr-k`
 
 ## HTTP Status Code Summary
 
@@ -139,19 +139,18 @@ One huge example (TODO: documentation for each value separately)
         { sku          : 1,
           price        : 2000,
           quantity     : 1,
+          title        : "something nice",
+          description  : "a description about nice",
           code         : "shipping",
-          vat_rate     : "19%",
-          vat_amount   : 380,
-          total_price  : 2000,
-          grand_total  : 2380 }, 
+          vat_rate     : "19" }, 
         { sku          : 1,
           price        : 2000,
           quantity     : 2,
           code         : "item",
-          vat_rate     : "19%",
+          vat_rate     : "19",
           vat_amount   : 380,
-          total_price  : 4000,
-          grand_total  : 4760,
+          title        : "something nice",
+          description  : "a description about nice",
           landing_page : "https://shop.example.com/item/2",
           image_url    : "http://assets.example.com/item/2.png" 
         }
