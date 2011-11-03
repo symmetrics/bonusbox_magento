@@ -1,0 +1,134 @@
+<?xml version="1.0"?>
+<config>
+    <sections>
+       	<bonusbox translate="label" module="bonusbox">
+            <label>Bonusbox</label>
+            <tab>sales</tab>
+            <sort_order>70</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>
+                 <general>
+					<label>General</label>
+                    <sort_order>10</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>       	  			
+       	  			<fields>
+                        <enabled translate="label">
+                            <label>Enabled</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>10</sort_order>
+		                    <show_in_default>1</show_in_default>
+		                    <show_in_website>1</show_in_website>
+		                    <show_in_store>1</show_in_store>       	  			
+                        </enabled>
+                        <live>
+							<label>Live Mode</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <comment>False equals test mode.</comment>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+						</live>
+						<live_public_key translate="label">
+                            <label>Public Key (Live)</label>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </live_public_key>
+						<live_secret_key translate="label">
+                            <label>Secret Key (Live)</label>
+                            <sort_order>40</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </live_secret_key>
+						<test_public_key translate="label">
+                            <label>Public Key (Test)</label>
+                            <sort_order>50</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </test_public_key>
+						<test_secret_key translate="label">
+                            <label>Secret Key (Test)</label>
+                            <sort_order>60</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </test_secret_key>
+					</fields>        	 
+       	 		</general>
+       	 		<success_page>
+					<label>Checkout Success Page</label>
+                    <sort_order>20</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>       	  			
+       	  			<fields>
+                        <coupon_code translate="label">
+                            <label>Coupon Code</label>
+                            <comment>A valid shopping cart price rule with this code must exists.</comment>
+                            <sort_order>10</sort_order>
+		                    <show_in_default>1</show_in_default>
+		                    <show_in_website>1</show_in_website>
+		                    <show_in_store>1</show_in_store>       	  			
+                        </coupon_code>
+                        <coupon_title translate="label">
+                            <label>Title</label>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+						</coupon_title>
+                        <coupon_description translate="label">
+                            <label>Description</label>
+                            <frontend_type>textarea</frontend_type>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+						</coupon_description>
+                        <coupon_expires_at translate="label">
+                            <label>Coupon Expires At</label>
+                            <sort_order>40</sort_order>
+		                    <show_in_default>1</show_in_default>
+		                    <show_in_website>1</show_in_website>
+		                    <show_in_store>1</show_in_store>       	  			
+                        </coupon_expires_at>
+                        <new_user_text translate="label">
+                            <label>New User Text</label>
+                            <frontend_type>textarea</frontend_type>
+                            <sort_order>50</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+						</new_user_text>
+                        <bonusbox_user_text translate="label">
+                            <label>Bonusbox User Text</label>
+                            <frontend_type>textarea</frontend_type>
+                            <sort_order>60</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+						</bonusbox_user_text>
+                        <style_url translate="label">
+                            <label>Stylesheet</label>
+                            <comment>Provide the path relative to your skin path (e.g. "css/bonusbox.css").</comment>
+                            <sort_order>70</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+						</style_url>
+       	  			</fields>        	 
+       	 		</success_page>
+            </groups>
+        </bonusbox>
+    </sections>
+</config>
