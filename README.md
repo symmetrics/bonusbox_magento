@@ -21,17 +21,9 @@ Otherwise the resource is not accessible and will result in a `404`.
 
 ## Errors
 
-* Invalid Request Errors
+Bonusbox uses conventional HTTP response codes to indicate success or failure of an API request. In general, codes in the 2xx range indicate success, codes in the 4xx range indicate an error that resulted from the provided information (e.g. a required parameter was missing), and codes in the 5xx range indicate an error with bonusbox's servers.
 
-Type: `invalid_request_error`
-
-* API Errors
-
-Type: `api_error`
-
-bonusbox uses conventional HTTP response codes to indicate success or failure of an API request. In general, codes in the 2xx range indicate success, codes in the 4xx range indicate an error that resulted from the provided information (e.g. a required parameter was missing), and codes in the 5xx range indicate an error with bonusbox's servers.
-
-All errors return JSON with a type (one of `invalid_request_error` or `api_error`) and message describing the particular problem.
+All errors return JSON with a message describing the particular problem.
 
 ## Authentication
 
@@ -50,17 +42,12 @@ All API requests must be made over [HTTPS](http://en.wikipedia.org/wiki/HTTP_Sec
 
 * publishable: `pk_QscRNyat69EeAepXO02_VQARNhu93GpTlFhu-K`
 * secret:      `kMBwsrKzdHS3OInejS6fvmPXW8Uz3Bg_embNF3SEcqI`
-  
-### Live
-
-* publishable: `pk_dLLVDMFnoH7W0UDiaZ5C7gIQQ7wCr1Y2i4D6vFM`
-* secret:      `KhDeR2ATjmhd_C8WjKNMBCO-54-Fz3Q8IGvi_a8fr-k`
 
 ## HTTP Status Code Summary
 
 **200** OK - Everything worked as expected.
 
-**400** Bad Request - Often missing a required parameter.
+**422** Bad Request - Often missing a required parameter.
 
 **401** Unauthorized - No valid API key provided.
 
@@ -174,10 +161,5 @@ One huge example (TODO: documentation for each value separately)
 ### Example Error
 
     {
-      "error": {
-        "type": "invalid_request_error",
-        "message": "You have to add at least one item.",
-        "code": "item_missing",
-        "param": "items",
-      }
-    }
+      "items":  ["You have to add at least one item."]
+    }    
