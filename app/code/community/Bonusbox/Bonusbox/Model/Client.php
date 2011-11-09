@@ -45,7 +45,7 @@ class Bonusbox_Bonusbox_Model_Client extends Varien_Http_Client
 			$this
  				->setAuth(Mage::helper('bonusbox')->getKey($secret))
 				->setUri(Mage::helper('bonusbox')->getConfig('url') . $resource)
-				->setRawData($this->encodeData($data), self::CONTENT_TYPE)
+				->setRawData($this->encodeData($data)) 
 			;
 			$response = $this->request('POST');
 			if (strpos($response->getStatus(), '2') === 0) # codes in the 2xx range indicate success
@@ -161,7 +161,6 @@ class Bonusbox_Bonusbox_Model_Client extends Varien_Http_Client
 				'image_url' => Mage::helper('catalog/image')->init($product, 'image')->__toString()
 			);
 		}
-				
 		return $this->requestResource('success_pages', true, $data);
 	} 
 	
