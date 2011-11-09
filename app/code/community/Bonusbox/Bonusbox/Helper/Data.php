@@ -17,6 +17,11 @@ class Bonusbox_Bonusbox_Helper_Data extends Mage_Core_Helper_Data
 	}
 	
 	
+	public function isOperational()
+	{
+		return $this->isEnabled() && $this->getKey('public') && $this->getKey('secret');
+	}
+	
 	public function getKey($secret)
 	{
 		$mode = $this->getConfig('live_mode') ? 'live' : 'test';

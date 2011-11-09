@@ -20,11 +20,6 @@
 			<bonusbox>
                 <class>Bonusbox_Bonusbox_Block</class>
             </bonusbox>
-			<checkout>
-				<rewrite>
-					<onepage_success>Bonusbox_Bonusbox_Block_Checkout_Onepage_Success</onepage_success>
-				</rewrite>
-			</checkout>
 		</blocks>
 
 		<resources>
