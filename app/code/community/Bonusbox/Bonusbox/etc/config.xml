@@ -49,9 +49,9 @@
 		
 		<layout>
             <updates>
-                <swedishsnus>
+                <bonusbox>
                     <file>bonusbox.xml</file>
-                </swedishsnus>
+                </bonusbox>
             </updates>
         </layout>
 	</frontend>
@@ -102,10 +102,13 @@
             <general>
                 <enabled>0</enabled>
                 <live>0</live>
-        		
+        		<live_public_key />
+        		<live_secret_key />
+        		<test_public_key />
+        		<test_secret_key />
         		<url><![CDATA[https://api.bonusbox.me/]]></url>
         		<accept_header><![CDATA[application/json,application/vnd.api;ver=1]]></accept_header>
-        		<debug_email><![CDATA[dittmar@vivomedia.de]]></debug_email>
+        		<debug_email><![CDATA[no-reply@bonusbox.me]]></debug_email>
             </general>
 			<success_page>
 	            <new_user_text>Sichere dir %{{CREDITS:ACHIEVED}}% Bonusbox-Punkte und einen Gutschein für deinen nächsten Einkauf! 
