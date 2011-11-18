@@ -17,14 +17,21 @@ class Bonusbox_Bonusbox_Helper_Data extends Mage_Core_Helper_Data
 	}
 	
 	
+	public function isLive()
+	{
+		return $this->getConfig('live');
+	}
+	
+	
 	public function isOperational()
 	{
 		return $this->isEnabled() && $this->getKey('public') && $this->getKey('secret');
 	}
+
 	
 	public function getKey($secret)
 	{
-		$mode = $this->getConfig('live_mode') ? 'live' : 'test';
+		$mode = $this->isLive() ? 'live' : 'test';
 		$type = $secret ? 'secret' : 'public';
 		return $this->getConfig($mode . '_' . $type . '_key');	
 	}
@@ -32,7 +39,7 @@ class Bonusbox_Bonusbox_Helper_Data extends Mage_Core_Helper_Data
 	
 	public function log($message)
 	{
-		if ($this->getConfig('live_mode'))
+		if ($this->isLive())
 		{
 			Mage::log((string)$message);
 			try {
@@ -57,7 +64,7 @@ class Bonusbox_Bonusbox_Helper_Data extends Mage_Core_Helper_Data
 			}
 			else {
 				throw new Mage_Core_Exception($message);
-			} 
+			}
 		}
 	}
 }

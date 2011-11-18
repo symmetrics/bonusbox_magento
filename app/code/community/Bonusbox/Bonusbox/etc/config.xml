@@ -111,12 +111,8 @@
         		<debug_email><![CDATA[no-reply@bonusbox.me]]></debug_email>
             </general>
 			<success_page>
-	            <new_user_text>Sichere dir %{{CREDITS:ACHIEVED}}% Bonusbox-Punkte und einen Gutschein für deinen nächsten Einkauf! 
-
-%{{FACEBOOK:LOGIN}}%</new_user_text>
-    	        <bonusbox_user_text>Du hast für deinen Einkauf %{{CREDITS:ACHIEVED}}% Punkte bekommen. Die fehlen noch %{{CREDITS:LEVELUP}}% um den naechsten %{{BADGE:LEVELUP}}% zu erreichen.
-
-%{{BONUSBOX:APP:[$caption=Hier geht es zu deinen Bonusbox Rabatten]}}%</bonusbox_user_text>
+	            <new_user_text>Sichere dir %{CREDITS:ACHIEVED} Bonusbox-Punkte und einen Gutschein für deinen nächsten Einkauf!</new_user_text>
+    	        <bonusbox_user_text>Du hast für deinen Einkauf %{CREDITS:ACHIEVED} Punkte bekommen. Die fehlen noch %{CREDITS:LEVELUP} um den naechsten %{BADGE:LEVELUP} zu erreichen.</bonusbox_user_text>
 			</success_page>
         </bonusbox>
     </default> 
