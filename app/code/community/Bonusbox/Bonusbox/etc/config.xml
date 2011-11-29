@@ -112,7 +112,7 @@
             </general>
 			<success_page>
 	            <new_user_text>Sichere dir %{CREDITS:ACHIEVED} Bonusbox-Punkte und einen Gutschein für deinen nächsten Einkauf!</new_user_text>
-    	        <bonusbox_user_text>Du hast für deinen Einkauf %{CREDITS:ACHIEVED} Punkte bekommen. Die fehlen noch %{CREDITS:LEVELUP} um den naechsten %{BADGE:LEVELUP} zu erreichen.</bonusbox_user_text>
+    	        <bonusbox_user_text>Du hast für deinen Einkauf %{CREDITS:ACHIEVED} Punkte bekommen. Die fehlen noch %{CREDITS:LEVELUP} um den nächsten %{BADGE:LEVELUP} zu erreichen.</bonusbox_user_text>
 			</success_page>
         </bonusbox>
     </default> 
