@@ -126,7 +126,7 @@ class Bonusbox_Bonusbox_Model_Client extends Varien_Http_Client
 					'title' => $order->getShippingDescription(),
 					'price' => $this->encodeDecimal($order->getData('shipping_amount')),
 					'vat_amount' => $this->encodeDecimal($order->getData('shipping_tax_amount')), 
-					'vat_rate' => $order->getData('shipping_amount') > 0 ? $this->encodeDecimal($order->getData('shipping_tax_amount') / ($order->getData('shipping_amount'))) : 0  
+					'vat_rate' => $order->getData('shipping_amount') > 0 ? $this->encodeDecimal($order->getData('shipping_tax_amount') / ($order->getData('shipping_amount') * 100)) : 0  
 				),
 				array(
 					'code' => 'payment',
