@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit bootstrap="bootstrap.php" processIsolation="false" verbose="true" debug="true" stop-on-failure="true">
+	<testsuites>
+ 		<testsuite name="integration">
+        	<directory>.</directory>
+    	</testsuite>
+ 	</testsuites>
+</phpunit>

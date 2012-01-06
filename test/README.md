@@ -1,6 +1,10 @@
-# Bonusbox's magento test systems
+# Bonusbox's magento plugin unit tests
 
-The sql file is based on version 1.4.0.0 and can be upgraded to every magento version (this is done on the first request and takes several seconds). 
-It contains the required configuration and minimum data (products, taxes, customer) for a bonunsbox demo. 
-Open the file "local.xml", copy it to app/etc/local.xml and set the database connection params. 
-Run http://path-to-magento/bonusbox/test/success_page.   
+You need to have phpunit installed on your system. 
+
+Run the modul tests with: php path/to/magento/test/case/phpunit.php --configuration case/phpunit.xml
+Run the integration tests with: php path/to/magento/test/case/phpunit.php --configuration case/phpunit.xml
+
+In order to test all magento version run: php path/to/magento/test/case/phpunit.php versions_basedir=path/to/mageto-subdir --configuration case/phpunit.xml.
+
+Add --coverage-html path/to/report-folder to enable code coverage.

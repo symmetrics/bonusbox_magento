@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit bootstrap="bootstrap.php" processIsolation="false" verbose="true" debug="true" stop-on-failure="true">
+	<testsuites>
+     	<testsuite name="case">
+        	<directory>.</directory>
+    	</testsuite>
+ 	</testsuites>
+ 	<filter>
+	 	<whitelist addUncoveredFilesFromWhitelist="true">
+		    <directory suffix=".php">../../app</directory>
+	  	</whitelist>
+	</filter>
+</phpunit>
