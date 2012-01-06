@@ -3,40 +3,27 @@ class Bonusbox_Bonusbox_Block_Checkout_Success extends Mage_Core_Block_Template
 {
 	protected $_template = 'bonusbox/checkout/success.phtml';
 	
-	protected function _beforeToHtml()
-	{
-		parent::_beforeToHtml();
-		try {
-			if (Mage::helper('bonusbox/successpage')->isOperational())
-			{
-				$orderId = Mage::getSingleton('checkout/session')->getLastOrderId();
-				$order = Mage::getModel('sales/order')->load($orderId);
-				if ($order->getId())
-				{
-					$response = Mage::getModel('bonusbox/client')->requestSuccessPage($order);
-					$this->setSuccessPageUrl($response['success_page']['url']);
-				}
-				else {
-					throw new Exception('No Order found for success page.');
-				}
-			}
-			else {
-				Mage::log('Bonusbox Success Page is missing config data.');
-			}
-		}
-		catch (Exception $ex)
-		{
-			Mage::helper('bonusbox')->log($ex);
-		}
-			
-	}
-	
-	
+	/**
+	 * Checks if a bonusbox success url exits. After rendering the url is removed from the session. 
+	 * Otherwise nothing is rendered.
+	 */
 	protected function _toHtml()
 	{
 		if ($this->getSuccessPageUrl())
 		{
-			return parent::_toHtml();
+			$html = parent::_toHtml();
+			Mage::helper('bonusbox')->getSession()->setSuccessPage(null);
+			return $html;
 		}
 	}
+	
+	/**
+	 * Retrieves the bonusbox success url from the session.
+	 */
+	public function getSuccessPageUrl()
+	{
+		$successPage = Mage::helper('bonusbox')->getSession()->getSuccessPage();
+		return $successPage['url'];
+	}
+	
 }

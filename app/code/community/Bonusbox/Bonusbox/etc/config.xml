@@ -2,7 +2,7 @@
 <config>
 	<modules>
 		<bonusbox_bonusbox>
-			<version>0.1.0</version>	
+			<version>1.1.0</version>	
 		</bonusbox_bonusbox>
 	</modules>
 	<global>
@@ -10,6 +10,11 @@
 			<bonusbox>
 				<class>Bonusbox_Bonusbox_Model</class>		
 			</bonusbox>
+			<salesrule>
+				<rewrite>
+					<validator>Bonusbox_Bonusbox_Model_SalesRule_Validator</validator>
+				</rewrite>
+			</salesrule>
 		</models>
 		<helpers>
 			<bonusbox>
@@ -34,6 +39,26 @@
                <connection><use>core_read</use></connection>
             </bonusbox_read>
         </resources>
+
+        <events>
+        	<salesrule_rule_condition_combine>
+	        	<observers>
+                    <bonusbox>
+                        <class>bonusbox/salesrule_condition_bonusbox</class>
+                        <method>addConditions</method>
+                    </bonusbox>
+                </observers>
+        	</salesrule_rule_condition_combine>
+        	
+        	<sales_model_service_quote_submit_after>
+        		<observers>
+        			<bonusbox>
+                        <class>bonusbox/sales_observer</class>
+                        <method>forwardOrder</method>
+        			</bonusbox>
+        		</observers>
+        	</sales_model_service_quote_submit_after>
+        </events>
     </global>
 	
 	<frontend>
@@ -110,10 +135,6 @@
         		<accept_header><![CDATA[application/json,application/vnd.api;ver=1]]></accept_header>
         		<debug_email><![CDATA[no-reply@bonusbox.me]]></debug_email>
             </general>
-			<success_page>
-	            <new_user_text>Sichere dir %{CREDITS:ACHIEVED} Bonusbox-Punkte und einen Gutschein für deinen nächsten Einkauf!</new_user_text>
-    	        <bonusbox_user_text>Du hast für deinen Einkauf %{CREDITS:ACHIEVED} Punkte bekommen. Die fehlen noch %{CREDITS:LEVELUP} um den nächsten %{BADGE:LEVELUP} zu erreichen.</bonusbox_user_text>
-			</success_page>
         </bonusbox>
     </default> 
 </config>

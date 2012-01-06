@@ -72,36 +72,6 @@
                     <show_in_website>1</show_in_website>
                     <show_in_store>1</show_in_store>       	  			
        	  			<fields>
-                        <coupon_code translate="label">
-                            <label>Coupon Code</label>
-                            <comment>A valid shopping cart price rule with this code must exists.</comment>
-                            <sort_order>10</sort_order>
-		                    <show_in_default>1</show_in_default>
-		                    <show_in_website>1</show_in_website>
-		                    <show_in_store>1</show_in_store>       	  			
-                        </coupon_code>
-                        <coupon_title translate="label">
-                            <label>Title</label>
-                            <sort_order>20</sort_order>
-                            <show_in_default>1</show_in_default>
-                            <show_in_website>1</show_in_website>
-                            <show_in_store>1</show_in_store>
-						</coupon_title>
-                        <coupon_description translate="label">
-                            <label>Description</label>
-                            <frontend_type>textarea</frontend_type>
-                            <sort_order>30</sort_order>
-                            <show_in_default>1</show_in_default>
-                            <show_in_website>1</show_in_website>
-                            <show_in_store>1</show_in_store>
-						</coupon_description>
-                        <coupon_expires_at translate="label">
-                            <label>Coupon Expires At</label>
-                            <sort_order>40</sort_order>
-		                    <show_in_default>1</show_in_default>
-		                    <show_in_website>1</show_in_website>
-		                    <show_in_store>1</show_in_store>       	  			
-                        </coupon_expires_at>
                         <new_user_text translate="label">
                             <label>New User Text</label>
                             <frontend_type>textarea</frontend_type>
