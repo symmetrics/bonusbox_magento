@@ -26,6 +26,29 @@ class Bonusbox_Bonusbox_Model_Client_Successpages extends Bonusbox_Bonusbox_Mode
 		);
 	}
 	
+
+	/**
+	* Sets required data from item object to array
+	* @param Mage_Sales_Model_Order_Item $item
+	* @return array
+	*/
+	protected function encodeItem(Mage_Sales_Model_Order_Item $item)
+	{
+		$product = Mage::getModel('catalog/product')->load($item->getProductId()); // ensure that all product attributes are loaded
+		return array(
+			'code' => 'product',
+			'sku' => $item->getSku(),
+			'quantity' => round($item->getQtyOrdered()),
+			'title' => $item->getName(),
+			'description' => $item->getDescription(),
+			'price' => $this->encodeDecimal($item->getData('price')),
+			'vat_rate' => $this->encodeDecimal($item->getData('tax_percent')),
+			'vat_amount' => $this->encodeDecimal($item->getData('tax_amount')),
+			'landing_page' => $product->getUrlModel()->getUrl($product, array('_ignore_category' => true)),
+			'image_url' => Mage::helper('catalog/image')->init($product, 'image')->__toString()
+		);
+	}
+		
 	/**
 	 * Encodes order to array
 	 * @param Mage_Sales_Model_Order $order
@@ -71,19 +94,7 @@ class Bonusbox_Bonusbox_Model_Client_Successpages extends Bonusbox_Bonusbox_Mode
 		
 		foreach ($order->getAllItems() as $item)
 		{
-			$product = Mage::getModel('catalog/product')->load($item->getProductId());
-			$data['items'][] = array(
-				'code' => 'product',
-				'sku' => $item->getSku(),
-				'quantity' => round($item->getQtyOrdered()),
-				'title' => $item->getName(),
-				'description' => $item->getDescription(),
-				'price' => $this->encodeDecimal($item->getData('price')),
-				'vat_rate' => $this->encodeDecimal($item->getData('tax_percent')),
-				'vat_amount' => $this->encodeDecimal($item->getData('tax_amount')),
-				'landing_page' => $product->getUrlModel()->getUrl($product, array('_ignore_category' => true)),
-				'image_url' => Mage::helper('catalog/image')->init($product, 'image')->__toString()
-			);
+			$data['items'][] = $this->encodeItem($item); 
 		}
 		return $data;
 	}

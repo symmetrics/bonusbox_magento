@@ -53,7 +53,10 @@ class MagentoTest extends PHPUnit_Framework_TestCase
 		return $quote;
 	}
 	
-	
+	/**
+	 * @param Mage_Sales_Model_Quote $quote
+	 * @return Mage_Sales_Model_Order
+	 */
 	public function placeOrder($quote = null)
 	{
 		if (!$quote)

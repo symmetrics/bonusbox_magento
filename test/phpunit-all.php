@@ -13,7 +13,10 @@ foreach ($args as $index => $arg)
 	if (strpos($arg, 'versions=') === 0)
 	{
 		$versions = str_replace('versions=', '', $arg);
-		$versions = explode(',', $versions);
+		if ($versions)
+		{
+			$versions = explode(',', $versions);
+		}
 		unset($args[$index]);
 	}
 	elseif (strpos($arg, 'versions_basedir=') === 0)

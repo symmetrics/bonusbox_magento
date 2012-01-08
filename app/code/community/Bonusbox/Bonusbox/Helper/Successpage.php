@@ -10,13 +10,17 @@ class Bonusbox_Bonusbox_Helper_Successpage extends Bonusbox_Bonusbox_Helper_Data
 	}
 	
 	
-	public function getCssUrl()
+	public function getCssUrl($appendTimestampp = true)
 	{
+		$url = Mage::getBaseUrl('skin');
 		$url = Mage::getDesign()->getSkinUrl($this->getConfig('style_url'), array());
-		$filename = $this->getCssFile();
-		if (file_exists($filename))
+		if ($appendTimestampp)
 		{
-			$url .= '?' . filemtime($filename);
+			$filename = $this->getCssFile();
+			if (file_exists($filename))
+			{
+				$url .= '?' . filemtime($filename);
+			}
 		}
 		return $url;
 	} 
@@ -24,6 +28,6 @@ class Bonusbox_Bonusbox_Helper_Successpage extends Bonusbox_Bonusbox_Helper_Data
 	
 	public function getCssFile()
 	{
-		return Mage::getDesign()->getSkinBaseDir() . '/' . $this->getConfig('style_url');
+		return Mage::getDesign()->getFilename($this->getConfig('style_url'), array('_type' => 'skin'));
 	}
 }

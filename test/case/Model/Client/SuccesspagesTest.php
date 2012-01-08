@@ -1,4 +1,6 @@
 <?php
+/**
+ */
 class Model_SuccesspagesTest extends MagentoTest
 {
 	/**
@@ -22,7 +24,8 @@ class Model_SuccesspagesTest extends MagentoTest
 		$this->assertEquals(2, count($data['addresses']));
 	}
 	
-	
+	/**
+	 */
 	public function testEncodeVirtualOrder()
 	{
 		$order = $this->placeOrder();

@@ -72,22 +72,6 @@
                     <show_in_website>1</show_in_website>
                     <show_in_store>1</show_in_store>       	  			
        	  			<fields>
-                        <new_user_text translate="label">
-                            <label>New User Text</label>
-                            <frontend_type>textarea</frontend_type>
-                            <sort_order>50</sort_order>
-                            <show_in_default>1</show_in_default>
-                            <show_in_website>1</show_in_website>
-                            <show_in_store>1</show_in_store>
-						</new_user_text>
-                        <bonusbox_user_text translate="label">
-                            <label>Bonusbox User Text</label>
-                            <frontend_type>textarea</frontend_type>
-                            <sort_order>60</sort_order>
-                            <show_in_default>1</show_in_default>
-                            <show_in_website>1</show_in_website>
-                            <show_in_store>1</show_in_store>
-						</bonusbox_user_text>
                         <style_url translate="label">
                             <label>Stylesheet</label>
                             <comment>Provide the path relative to your skin path (e.g. "css/bonusbox.css").</comment>
