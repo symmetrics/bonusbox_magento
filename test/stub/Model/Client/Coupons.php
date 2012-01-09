@@ -79,4 +79,9 @@ class Stub_Model_Client_Coupons extends Bonusbox_Bonusbox_Model_Client_Coupons
 				);
 		}
 	} 
+	
+	public function delete($couponCode)
+	{
+		return $this->get($couponCode);
+	}
 }

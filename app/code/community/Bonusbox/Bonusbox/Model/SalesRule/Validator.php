@@ -10,9 +10,7 @@ class Bonusbox_Bonusbox_Model_SalesRule_Validator extends Mage_SalesRule_Model_V
 	 */
 	public function init($websiteId, $customerGroupId, $couponCode)
 	{
-		$quote = new Varien_Object();
-		$quote->setCouponCode($couponCode);
-		if (Mage::helper('bonusbox')->getCustomerBadge($quote))
+		if (Mage::helper('bonusbox')->isValidBonusboxCouponCode($couponCode))
 		{
 			$this->setBonusboxCode($couponCode);			
 			$couponCode = null;

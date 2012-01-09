@@ -24,6 +24,31 @@ class MagentoTest extends PHPUnit_Framework_TestCase
 	}
 	
 	/**
+	* sets config value and return array with key and old value for backup
+	* @param string $path
+	* @param mixed $value
+	* @return array
+	*/
+	public function setConfig($path, $value)
+	{
+		$store = Mage::app()->getStore();
+		$oldValue = $store->getConfig($path);
+		$store->setConfig($path, $value);
+		return array($path, $oldValue);
+	}
+	
+	/**
+	 * Restore config value
+	 * @param array $backup
+	 */
+	public function restoreConfig($backup)
+	{
+		list($path, $value) = $backup;
+		Mage::app()->getStore()->setConfig($path, $value);
+	}
+	
+	
+	/**
 	* @return Mage_Sales_Model_Quote
 	*/
 	public function getQuote()

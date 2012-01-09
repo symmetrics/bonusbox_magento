@@ -4,6 +4,7 @@ class Bonusbox_Bonusbox_Model_Client_Badges extends Bonusbox_Bonusbox_Model_Clie
 	protected $_resourceName = 'badges';
 	
 	/**
+	 * @link https://github.com/bonusboxme/api_documentation/wiki/Get--badges
 	 * @return mixed
 	 */
 	public function get()

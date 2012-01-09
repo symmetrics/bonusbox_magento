@@ -1,10 +1,7 @@
 <?php
-/**
- */
 class Model_SuccesspagesTest extends MagentoTest
 {
 	/**
-	 * 
 	 * @return Bonusbox_Bonusbox_Model_Client_SuccessPages
 	 */
 	protected function getClient()
@@ -22,6 +19,7 @@ class Model_SuccesspagesTest extends MagentoTest
 		$this->assertEquals($order->getIncrementId(), $data['order_number']);
 		$this->assertEquals(count($order->getAllItems()), 1);
 		$this->assertEquals(2, count($data['addresses']));
+		$this->assertNotEmpty($data['style_url']);
 	}
 	
 	/**

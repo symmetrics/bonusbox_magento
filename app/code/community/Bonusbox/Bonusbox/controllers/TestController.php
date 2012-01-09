@@ -1,5 +1,8 @@
 <?php
 require_once 'Mage/Checkout/controllers/OnepageController.php';
+/**
+ * @codeCoverageIgnore
+ */
 class Bonusbox_Bonusbox_TestController extends Mage_Checkout_OnepageController 
 {
 	protected function getOrder()

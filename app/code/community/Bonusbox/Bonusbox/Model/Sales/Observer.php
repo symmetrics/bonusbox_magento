@@ -2,7 +2,8 @@
 class Bonusbox_Bonusbox_Model_Sales_Observer  
 {
 	/**
-	 * Forward order to bonuxbox and retrieve url for success page iframe.
+	 * Forwards order to bonuxbox and saves url for success page iframe in session.
+	 * Deletes bonusbox coupon code.
 	 * @param Varien_Event_Observer $observer
 	 */
 	public function forwardOrder(Varien_Event_Observer $observer)
@@ -12,21 +13,33 @@ class Bonusbox_Bonusbox_Model_Sales_Observer
 		{
 			if (Mage::helper('bonusbox/successpage')->isOperational())
 			{
-				try {
-					$response = Mage::getModel('bonusbox/client_successpages')->post($order);
-					Mage::helper('bonusbox')->getSession()
-						->setSuccessPage($response['success_page'])
-    					->setCustomerBadgesByCoupon(null) // invalidate Customer Badge Cache
-    				;
+				try { // send order to bonusbox
+    				$response = Mage::getModel('bonusbox/client_successpages')->post($order);
+					Mage::helper('bonusbox')->getSession()->setSuccessPage($response['success_page']);
 				}
 				catch (Exception $ex)
 				{
 					Mage::helper('bonusbox')->handleError($ex);
 				}
+
+				try { // delete coupon code from bonusbox
+					if (Mage::helper('bonusbox')->isValidBonusboxCouponCode($order->getCouponCode()))
+					{
+						Mage::getModel('bonusbox/client_coupons')->delete($order->getCouponCode());
+					}
+				}
+				catch (Exception $ex)
+				{
+					Mage::helper('bonusbox')->handleError($ex);
+				}
+				
+				// invalidate Customer Badge Cache
+  				Mage::helper('bonusbox')->getSession()->setCustomerBadgesByCoupon(null); 
 			}	
 			else {
 				Mage::log('Bonusbox Success Page is missing config data.');
 			}
 		}
 	}
+	
 }

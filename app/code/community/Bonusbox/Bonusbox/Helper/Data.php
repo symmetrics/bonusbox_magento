@@ -104,6 +104,18 @@ class Bonusbox_Bonusbox_Helper_Data extends Mage_Core_Helper_Data
 	}
 	
 	/**
+	 * Checks if coupon code is a valid bonusbox code
+	 * @param string $couponCode
+	 * @return bool
+	 */
+	public function isValidBonusboxCouponCode($couponCode)
+	{
+		$request = new Varien_Object();
+		$request->setCouponCode($couponCode);
+		return Mage::helper('bonusbox')->getCustomerBadge($request) !== null;
+	}
+	
+	/**
 	 * Retrieves the badge id for a given coupon code. The response is cached in the session. 
 	 * @param Varien_Object $quote
 	 * @return int

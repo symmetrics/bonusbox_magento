@@ -41,9 +41,21 @@ class Bonusbox_Bonusbox_Model_Client extends Varien_Http_Client
 	{
 		return json_decode($body, true);
 	}
+
+	/**
+	* Formats decimal values to int by multiplying and rounding
+	* @param decimal $value
+	* @param int $precision
+	* @return int
+	*/
+	public function encodeDecimal($value, $precision = 2)
+	{
+		return (int)round($value * pow(10, $precision));
+	}
 	
 	/**
 	 * Request a resource with given method and data.
+	 * @link https://github.com/bonusboxme/api_documentation/wiki
 	 * @param string $method
 	 * @param bool $useSecretKey - Flag for secure/public key
 	 * @param mixed $queryData
@@ -79,17 +91,6 @@ class Bonusbox_Bonusbox_Model_Client extends Varien_Http_Client
 	}
 	
 	/**
-	 * Formats decimal values to int by multiplying and rounding
-	 * @param decimal $value
-	 * @param int $precision
-	 * @return int
-	 */
-	public function encodeDecimal($value, $precision = 2)
-	{
-		return (int)round($value * pow(10, $precision));
-	}
-	
-	/**
 	 * Super class does not support __toString
 	 * @return string
 	 * @codeCoverageIgnore
@@ -103,7 +104,6 @@ class Bonusbox_Bonusbox_Model_Client extends Varien_Http_Client
 		return implode("\n", array(
 			(string)$this->getUri(),
  			implode("\n", $headers),
- 			'Authorization: ' . $this->auth['type'] . ' ' . $this->auth['user'] . ':' . $this->auth['password'],
  			$this->raw_post_data
 		));
 	}

@@ -25,7 +25,6 @@ class Bonusbox_Bonusbox_Model_Client_Successpages extends Bonusbox_Bonusbox_Mode
 			'zip' => $address->getPostcode()
 		);
 	}
-	
 
 	/**
 	* Sets required data from item object to array
@@ -102,6 +101,7 @@ class Bonusbox_Bonusbox_Model_Client_Successpages extends Bonusbox_Bonusbox_Mode
 	/**
 	 * Request resource success_pages with order data
 	 * Return url and token, if successful, otherwise detailed error description
+	 * @link https://github.com/bonusboxme/api_documentation/wiki/CREATE-success_pages
 	 * @param Mage_Sales_Model_Order $order
 	 * @return mixed
 	 */

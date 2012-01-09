@@ -1,12 +1,19 @@
 <?php
 class Helper_DataTest extends MagentoTest
 {
-	public function _testGetCustomerBadge()
+	public function testIsValidBonusboxCouponCode()
+	{
+		$this->assertTrue(Mage::helper('bonusbox')->isValidBonusboxCouponCode(Stub_Model_Client_Coupons::GOLD));
+		$this->assertFalse(Mage::helper('bonusbox')->isValidBonusboxCouponCode('Regular'));
+	}
+	
+	
+	public function testGetCustomerBadge()
 	{
 		$request = new Varien_Object();
-		$request->setCouponCode('Winter');
+		$request->setCouponCode(Stub_Model_Client_Coupons::GOLD);
 		$badge = Mage::helper('bonusbox')->getCustomerBadge($request);
-		$this->assertEquals(23, $badge);
+		$this->assertEquals(Stub_Model_Client_Badges::GOLD, $badge);
 	}
 	
 	
@@ -20,13 +27,13 @@ class Helper_DataTest extends MagentoTest
 			$this->assertNotEmpty($option['label']);
 		}
 	}
-	
+
 	
 	public function testHandleErrorLive()
 	{
-		$old = $this->setConfig('bonusbox/general/live', 1);
+		$backup = $this->setConfig('bonusbox/general/live', 1);
 		Mage::helper('bonusbox')->handleError('Error');
-		$this->setConfig('bonusbox/general/live', $old);
+		$this->restoreConfig($backup);
 	}
 	
 	/**
@@ -34,17 +41,8 @@ class Helper_DataTest extends MagentoTest
 	 */
 	public function testHandleErrorTest()
 	{
-		$old = $this->setConfig('bonusbox/general/live', 0);
+		$backup = $this->setConfig('bonusbox/general/live', 0);
 		Mage::helper('bonusbox')->handleError('Error');
-		$this->setConfig('bonusbox/general/live', $old);
-	}
-	
-	
-	public function setConfig($path, $value)
-	{
-		$store = Mage::app()->getStore();
-		$oldValue = $store->getConfig($path);
-		$store->setConfig($path, $value);
-		return $oldValue;
+		$this->restoreConfig($backup);
 	}
 }
