@@ -13,28 +13,18 @@ class Bonusbox_Bonusbox_Model_Sales_Observer
 		{
 			if (Mage::helper('bonusbox/successpage')->isOperational())
 			{
-				try { // send order to bonusbox
-    				$response = Mage::getModel('bonusbox/client_successpages')->post($order);
-					Mage::helper('bonusbox')->getSession()->setSuccessPage($response['success_page']);
-				}
-				catch (Exception $ex)
+				// send order to bonusbox
+    			$response = Mage::getModel('bonusbox/client_successpages')->post($order);
+				Mage::helper('bonusbox')->getSession()->setSuccessPage($response['success_page']);
+				
+				// delete coupon code from bonusbox
+				if (Mage::helper('bonusbox')->isValidBonusboxCouponCode($order->getCouponCode()))
 				{
-					Mage::helper('bonusbox')->handleError($ex);
-				}
-
-				try { // delete coupon code from bonusbox
-					if (Mage::helper('bonusbox')->isValidBonusboxCouponCode($order->getCouponCode()))
-					{
-						Mage::getModel('bonusbox/client_coupons')->delete($order->getCouponCode());
-					}
-				}
-				catch (Exception $ex)
-				{
-					Mage::helper('bonusbox')->handleError($ex);
+					Mage::getModel('bonusbox/client_coupons')->delete($order->getCouponCode());
 				}
 				
 				// invalidate Customer Badge Cache
-  				Mage::helper('bonusbox')->getSession()->setCustomerBadgesByCoupon(null); 
+  				Mage::helper('bonusbox')->getSession()->setCustomerBadgesByCoupon(null);
 			}	
 			else {
 				Mage::log('Bonusbox Success Page is missing config data.');

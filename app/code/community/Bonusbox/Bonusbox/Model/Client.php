@@ -40,10 +40,10 @@ class Bonusbox_Bonusbox_Model_Client extends Varien_Http_Client
 		$helper = Mage::helper('bonusbox');
 		$this
 			->resetParameters(true)
-			->setUri($helper->getConfig('url', $this->getStoreId()) . $this->_resourceName)
-			->setHeaders('Accept', $helper->getConfig('accept_header', $this->getStoreId()))
+			->setUri($helper->getConfig('url') . $this->_resourceName)
+			->setHeaders('Accept', $helper->getConfig('accept_header'))
 			->setHeaders('Content-Type', self::CONTENT_TYPE)
-			->setAuth($helper->getKey($useSecretKey, $this->getStoreId()))
+			->setAuth($helper->getKey($useSecretKey, $this->getStoreId())) // to collect all badges with multiple shops, request has ti be executed with different store context
 			->setRawData(null)
 		;
 		return $this;
@@ -77,7 +77,7 @@ class Bonusbox_Bonusbox_Model_Client extends Varien_Http_Client
 
 	/**
 	 * Decodes data from json format
-	 * @param unknown_type $body
+	 * @param mixed $body
 	 */
 	public function decodeData($body)
 	{
@@ -102,8 +102,9 @@ class Bonusbox_Bonusbox_Model_Client extends Varien_Http_Client
 	 * @param bool $useSecretKey - Flag for secure/public key
 	 * @param mixed $queryData
 	 * @param mixed $rawData
+	 * @param array $acceptedErrors codes that do not invoke an exception, if an error is provided in the response @TODO move to handleError method for every client
 	 */
-	public function requestResource($method, $useSecretKey, $queryData = null, $rawData = null)
+	public function requestResource($method, $useSecretKey, $queryData = null, $rawData = null, $acceptedErrors = null)
 	{
 		try {
 			$this->init($useSecretKey);
@@ -119,8 +120,16 @@ class Bonusbox_Bonusbox_Model_Client extends Varien_Http_Client
 			$response = $this->request($method);
 			if (strpos($response->getStatus(), '2') === 0) # codes in the 2xx range indicate success
 			{
-				$response = $this->decodeData($response->getBody());
-				return $response;
+				$responseBody = $this->decodeData($response->getBody());
+				return $responseBody;
+			}
+			if (is_array($acceptedErrors) && in_array($response->getStatus(), $acceptedErrors))
+			{
+				$responseBody = $this->decodeData($response->getBody());
+				if ($responseBody['error'])
+				{
+					return null;
+				}
 			}
 			require_once 'Bonusbox/Bonusbox/Exception.php';
 			throw new Bonusbox_Bonusbox_Exception("Invalid Response\n" . (string)$this . "\n\n" . (string)$response);

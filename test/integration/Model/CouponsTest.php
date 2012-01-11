@@ -22,12 +22,10 @@ class CouponsTest extends MagentoTest
 	}
 	
 
-	/**
-	* @expectedException Bonusbox_Bonusbox_Exception
-	*/
 	public function testGetFailure()
 	{
 		$this->getClient()->get('_');
+		$this->assertEmpty($response);
 	}
 	
 	
@@ -39,11 +37,9 @@ class CouponsTest extends MagentoTest
 	}
 
 
-	/**
-	* @expectedException Bonusbox_Bonusbox_Exception
-	*/
 	public function testDeleteFailure()
 	{
 		$this->getClient()->delete('_');
+		$this->assertEmpty($response);
 	}
 }

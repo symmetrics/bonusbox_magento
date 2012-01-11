@@ -5,11 +5,13 @@ class MagentoTest extends PHPUnit_Framework_TestCase
 
 // 	protected $runType = 'store';
 	
-// 	public function setUp()
-// 	{
-// 		Mage::app($this->runCode, $this->runType);
+	public function setUp()
+	{
+		$this->setConfig('bonusbox/general/debug_email', 'no-reply@localhost');
+		
+		// 		Mage::app($this->runCode, $this->runType);
 // 		Zend_Session::$_unitTestEnabled = true;
-// 	}
+	}
 	
 
 	public static function stubClass($type, $module, $fromClass, $toClass)

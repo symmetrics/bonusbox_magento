@@ -17,8 +17,7 @@ class Bonusbox_Bonusbox_TestController extends Mage_Checkout_OnepageController
     public function successAction()
     {
     	$order = $this->getOrder();
-    	$session = $this->getOnepage()->getCheckout();
-    	$session->setLastOrderId($order->getId());
+    	Mage::dispatchEvent('sales_model_service_quote_submit_after', array('order'=>$order));
     	
     	$this->loadLayout();
 		$this->getLayout()->getBlock('content')->append($this->getLayout()->createBlock('bonusbox/checkout_success'));
