@@ -9,9 +9,9 @@ class Bonusbox_Bonusbox_Helper_Data extends Mage_Core_Helper_Data
 	 * Convinience method for access to config data. 
 	 * @param string $field 
 	 */
-	public function getConfig($field)
+	public function getConfig($field, $storeId = null)
 	{
-		return Mage::getStoreConfig($this->configCode . '/' . $this->configSection . '/' . $field);
+		return Mage::getStoreConfig($this->configCode . '/' . $this->configSection . '/' . $field, $storeId);
 	}
 	
 	
@@ -39,11 +39,11 @@ class Bonusbox_Bonusbox_Helper_Data extends Mage_Core_Helper_Data
 	 * Returns the key for the selected live mode (live|test) and the given param (public|secret)
 	 * @param bool $secret
 	 */
-	public function getKey($secret)
+	public function getKey($secret, $storeId = null)
 	{
 		$mode = $this->isLive() ? 'live' : 'test';
 		$type = $secret ? 'secret' : 'public';
-		return $this->getConfig($mode . '_' . $type . '_key');	
+		return $this->getConfig($mode . '_' . $type . '_key', $storeId);	
 	}
 	
 	/**
@@ -85,7 +85,9 @@ class Bonusbox_Bonusbox_Helper_Data extends Mage_Core_Helper_Data
 	}
 	
 	/**
-	 * Retrieves an options array with the id, title (incl. the benefit). The Badges are cached in the session. 
+	 * Retrieves an options array with the id, title (incl. the benefit). 
+	 * The Badges are cached in the session. 
+	 * @TODO refactor and extract to badge helper class
 	 * @return array
 	 */
 	public function getBadgeOptions()
@@ -93,16 +95,31 @@ class Bonusbox_Bonusbox_Helper_Data extends Mage_Core_Helper_Data
 		$session = Mage::getSingleton('bonusbox/session');
 		if (!$session->getData('badge_options'))
 		{
-			$badges = Mage::getModel('bonusbox/client_badges')->get();
-			foreach ($badges as $badge)
+			$secret = true;
+			foreach (Mage::app()->getGroups() as $storeGroup)
 			{
-				$badge = $badge['badge'];
-				$label = $badge['title'];
-				if ($badge['benefit'])
+				$apiKey = $this->getKey($secret, $storeGroup->getDefaultStoreId());
+				$storeGroups[$apiKey] = $storeGroup;
+			}
+			
+			$client = Mage::getModel('bonusbox/client_badges');
+			foreach ($storeGroups as $storeGroup)
+			{
+				$badges = $client->setStoreId($storeGroup->getDefaultStoreId())->get();
+				foreach ($badges as $badge)
 				{
-					$label .= sprintf(' (%s)', $badge['benefit']);
-				} 
-				$badgeOptions[] = array('value' => $badge['id'], 'label' => $label);
+					$badge = $badge['badge'];
+					$label = $badge['title'];
+					if ($badge['benefit'])
+					{
+						$label = sprintf('%s (%s)', $label, $badge['benefit']);
+					} 
+					if (count($storeGroups) > 1)
+					{
+						$label = sprintf('%s - %s', $storeGroup->getName(), $label);
+					}
+					$badgeOptions[] = array('value' => $badge['id'], 'label' => $label);
+				}
 			}
 			$session->setData('badge_options', $badgeOptions);
 		}
@@ -118,11 +135,13 @@ class Bonusbox_Bonusbox_Helper_Data extends Mage_Core_Helper_Data
 	{
 		$request = new Varien_Object();
 		$request->setCouponCode($couponCode);
-		return Mage::helper('bonusbox')->getCustomerBadge($request) !== null;
+		return $this->getCustomerBadge($request) !== null;
 	}
 	
 	/**
-	 * Retrieves the badge id for a given coupon code. The response is cached in the session. 
+	 * Retrieves the badge id for a given coupon code. 
+	 * The response is cached in the session. 
+	 * @TODO extract to badge helper class
 	 * @param Varien_Object $quote
 	 * @return int
 	 */

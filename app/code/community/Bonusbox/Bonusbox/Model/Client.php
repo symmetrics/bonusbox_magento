@@ -9,19 +9,61 @@ class Bonusbox_Bonusbox_Model_Client extends Varien_Http_Client
 		METHOD_GET = 'GET',
 		METHOD_DELETE = 'DELETE'
 	;
-	
+
+	/**
+	 * Name of requested resource -> is set by sub classes
+	 * @var string
+	 */
 	protected $_resourceName;
 	
 	/**
-	 * set default config data
+	 * determines store and which config data will be used 
+	 * @TODO resolve with config object 
+	 * @var int
+	 */
+	protected $_storeId;
+	
+	/**
+	 * object is created with empty array by magento -> if constructor is invoked with empty array, it requires to contain a valid url  
 	 */
 	public function __construct()
 	{
 		parent::__construct();
+	}
+	
+	/**
+	 * Initialize request
+	 * @param bool $useSecretKey
+	 */
+	public function init($useSecretKey = true)
+	{
+		$helper = Mage::helper('bonusbox');
 		$this
- 			->setHeaders('Accept', Mage::helper('bonusbox')->getConfig('accept_header'))
- 			->setHeaders('Content-Type', self::CONTENT_TYPE)
+			->resetParameters(true)
+			->setUri($helper->getConfig('url', $this->getStoreId()) . $this->_resourceName)
+			->setHeaders('Accept', $helper->getConfig('accept_header', $this->getStoreId()))
+			->setHeaders('Content-Type', self::CONTENT_TYPE)
+			->setAuth($helper->getKey($useSecretKey, $this->getStoreId()))
+			->setRawData(null)
 		;
+		return $this;
+	}
+	
+	/**
+	 * @return int
+	 */
+	public function getStoreId()
+	{
+		return $this->_storeId;
+	}
+	
+	/**
+	 * @param int $value
+	 */
+	public function setStoreId($value)
+	{
+		$this->_storeId = $value;
+		return $this;
 	}
 	
 	/**
@@ -64,8 +106,7 @@ class Bonusbox_Bonusbox_Model_Client extends Varien_Http_Client
 	public function requestResource($method, $useSecretKey, $queryData = null, $rawData = null)
 	{
 		try {
-			$this->setAuth(Mage::helper('bonusbox')->getKey($useSecretKey));
-			$this->setUri(Mage::helper('bonusbox')->getConfig('url') . $this->_resourceName);
+			$this->init($useSecretKey);
 			if ($queryData)
 			{
 				// @todo if array is provided
