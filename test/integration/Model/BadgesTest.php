@@ -15,6 +15,6 @@ class BadgesTest extends MagentoTest
 	{
 		$badges = $this->getClient()->get();
 		$this->assertInternalType('array', $badges);
-		$this->assertGreaterThan(0, count($badges));
+		$this->assertNotEmpty($badges[0]['badge']['title']);
 	}
 }

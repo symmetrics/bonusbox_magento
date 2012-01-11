@@ -11,9 +11,9 @@ class Stub_Model_Client_Badges extends Bonusbox_Bonusbox_Model_Client_Badges
 	public function get()
 	{
 		return array(
-			array('id' => self::BRONZE, 'title' => 'Bronze', 'benefit' => '5% Discount'),
-			array('id' => self::SILVER, 'title' => 'Silver', 'benefit' => '10% Discount'),
-			array('id' => self::GOLD, 'title' => 'Gold', 'benefit' => '15% Discount')
+			array('badge' => array('id' => self::BRONZE, 'title' => 'Bronze', 'benefit' => '5% Discount')),
+			array('badge' => array('id' => self::SILVER, 'title' => 'Silver', 'benefit' => '10% Discount')),
+			array('badge' => array('id' => self::GOLD, 'title' => 'Gold', 'benefit' => '15% Discount'))
 		);
 	}
 }

@@ -96,7 +96,13 @@ class Bonusbox_Bonusbox_Helper_Data extends Mage_Core_Helper_Data
 			$badges = Mage::getModel('bonusbox/client_badges')->get();
 			foreach ($badges as $badge)
 			{
-				$badgeOptions[] = array('value' => $badge['id'], 'label' => sprintf('%s (%s)', $badge['title'], $badge['benefit']));
+				$badge = $badge['badge'];
+				$label = $badge['title'];
+				if ($badge['benefit'])
+				{
+					$label .= sprintf(' (%s)', $badge['benefit']);
+				} 
+				$badgeOptions[] = array('value' => $badge['id'], 'label' => $label);
 			}
 			$session->setData('badge_options', $badgeOptions);
 		}
