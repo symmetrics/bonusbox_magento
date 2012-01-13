@@ -29,7 +29,7 @@
 							<label>Live Mode</label>
                             <frontend_type>select</frontend_type>
                             <source_model>adminhtml/system_config_source_yesno</source_model>
-                            <comment>False equals test mode.</comment>
+                            <comment>Yes = Live Mode, No = Test Mode.</comment>
                             <sort_order>20</sort_order>
                             <show_in_default>1</show_in_default>
                             <show_in_website>1</show_in_website>

@@ -134,8 +134,10 @@
         		<url><![CDATA[https://api.bonusbox.me/]]></url>
         		<accept_header><![CDATA[application/json,application/vnd.api;ver=1]]></accept_header>
         		<debug_email><![CDATA[no-reply@bonusbox.me]]></debug_email>
-        		<style_url>css/bonusbox.css</style_url>
             </general>
+            <success_page>
+        		<style_url>css/bonusbox.css</style_url>
+        	</success_page>
         </bonusbox>
     </default> 
 </config>
