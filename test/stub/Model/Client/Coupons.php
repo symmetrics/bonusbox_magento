@@ -14,69 +14,69 @@ class Stub_Model_Client_Coupons extends Bonusbox_Bonusbox_Model_Client_Coupons
 		switch ($couponCode)
 		{
 			case self::BRONZE:
-				return array(
+				return array("coupon" => array(
 					"user" => array(
 						"id" => 12923,
-						"credits" => 8000
+						"credits" => 8000,
+						"badge" => array(
+						    "id" => Stub_Model_Client_Badges::BRONZE,
+							"title" => "bronze badge",
+						    "discount" => 1500
+						 )
 					),
-					"badge" => array(
-					    "id" => Stub_Model_Client_Badges::BRONZE,
-						"title" => "bronze badge",
-					    "discount" => 1500
-					 ),
-					 "coupon" => $couponCode,
+					 "code" => $couponCode,
 			  		 "shop" => array(
 			    		"id" => 123
 					 )
-				);
+				));
 			case self::SILVER:
-				return array(
+				return array("coupon" => array(
 					"user" => array(
 						"id" => 12923,
-						"credits" => 8000
+						"credits" => 8000,
+						"badge" => array(
+						    "id" => Stub_Model_Client_Badges::SILVER,
+							"title" => "bronze badge",
+						    "discount" => 1500
+						 )
 					),
-					"badge" => array(
-					    "id" => Stub_Model_Client_Badges::SILVER,
-						"title" => "bronze badge",
-					    "discount" => 1500
-					 ),
-					 "coupon" => $couponCode,
+					 "code" => $couponCode,
 			  		 "shop" => array(
 			    		"id" => 123
 					 )
-				);
+				));
 			case self::GOLD:
-				return array(
+				return array("coupon" => array(
 					"user" => array(
 						"id" => 12923,
-						"credits" => 8000
+						"credits" => 8000,
+						"badge" => array(
+						    "id" => Stub_Model_Client_Badges::GOLD,
+							"title" => "bronze badge",
+						    "discount" => 1500
+						 ),
 					),
-					"badge" => array(
-					    "id" => Stub_Model_Client_Badges::GOLD,
-						"title" => "bronze badge",
-					    "discount" => 1500
-					 ),
-					 "coupon" => $couponCode,
+					 "code" => $couponCode,
 			  		 "shop" => array(
 			    		"id" => 123
 					 )
-				);
+				));
 			case self::INVALID_RULE:
-				return array(
+				return array("coupon" => array(
 					"user" => array(
 						"id" => 12923,
-						"credits" => 8000
+						"credits" => 8000,
+						"badge" => array(
+						    "id" => -1,
+							"title" => "badge without valid salesrule",
+						    "discount" => 1500
+						 ),
 					),
-					"badge" => array(
-					    "id" => -1,
-						"title" => "badge without valide salesrule",
-					    "discount" => 1500
-					 ),
-					 "coupon" => $couponCode,
+					 "code" => $couponCode,
 			  		 "shop" => array(
 			    		"id" => 123
 					 )
-				);
+				));
 		}
 	} 
 	

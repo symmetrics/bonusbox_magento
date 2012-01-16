@@ -1,5 +1,5 @@
 <?php
-class Bonusbox_Bonusbox_Model_Client extends Varien_Http_Client
+class Bonusbox_Bonusbox_Model_Client extends Zend_Http_Client
 {
 	const CONTENT_TYPE = 'application/json';
 	
@@ -29,6 +29,14 @@ class Bonusbox_Bonusbox_Model_Client extends Varien_Http_Client
 	public function __construct()
 	{
 		parent::__construct();
+		$adapter = new Zend_Http_Client_Adapter_Curl();
+		$this->setAdapter($adapter);
+		$adapter->setConfig(array(
+			'curloptions' => array(
+				CURLOPT_SSL_VERIFYPEER => 0,
+				CURLOPT_SSL_VERIFYHOST => 0
+			)
+		));
 	}
 	
 	/**
@@ -117,7 +125,9 @@ class Bonusbox_Bonusbox_Model_Client extends Varien_Http_Client
 			{
 				$this->setRawData($this->encodeData($rawData));
 			} 
-			$response = $this->request($method);
+			$this->setMethod($method);
+			
+			$response = $this->request();
 			if (strpos($response->getStatus(), '2') === 0) # codes in the 2xx range indicate success
 			{
 				$responseBody = $this->decodeData($response->getBody());
@@ -152,7 +162,7 @@ class Bonusbox_Bonusbox_Model_Client extends Varien_Http_Client
 			$headers[] = $header[0] . ': ' . $header[1]; 
 		}
 		return implode("\n", array(
-			(string)$this->getUri(),
+			$this->method . ' ' . $this->getUri(),
  			implode("\n", $headers),
  			$this->raw_post_data
 		));

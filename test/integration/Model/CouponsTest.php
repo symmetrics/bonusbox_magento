@@ -15,31 +15,50 @@ class CouponsTest extends MagentoTest
 	 */
 	public function testGetSuccess()
 	{
-		$code = 'Winter';
+		$code = 'bb_ImgQVPBb';
 		$response = $this->getClient()->get($code);
-		$this->assertEquals($code, $response['coupon']);
-		$this->assertNotEmpty($response['badge']['id']);
+		$this->assertEquals($code, $response['coupon']['code']);
+		$this->assertNotEmpty($response['coupon']['user']['badge']['id']);
 	}
 	
 
 	public function testGetFailure()
 	{
-		$this->getClient()->get('_');
+		$response = $this->getClient()->get('_');
 		$this->assertEmpty($response);
 	}
 	
 	
-	public function testDeleteSuccess()
+	public function _testDeleteSuccess()
 	{
-		$code = 'Winter';
+		$code = 'bb_YdwulA-s';
+		
 		$response = $this->getClient()->delete($code);
-		$this->assertEquals($code, $response['coupon']);
+		$this->assertEmpty($response);
 	}
 
-
+	/**
+	 * @expectedException Bonusbox_Bonusbox_Exception
+	 */
+	public function _testDeleteTwice()
+	{
+		$code = 'bb_49kVeP88';
+		try {
+			$this->getClient()->delete($code);
+		}
+		catch (Bonusbox_Bonusbox_Exception $ex)
+		{
+			$this->assertTrue(false, 'Precondition for deletion of coupon code violated');
+		}
+		$this->getClient()->delete($code);
+	}
+		
+	/**
+	 * @expectedException Bonusbox_Bonusbox_Exception
+	 */
 	public function testDeleteFailure()
 	{
-		$this->getClient()->delete('_');
+		$response = $this->getClient()->delete('_');
 		$this->assertEmpty($response);
 	}
 }

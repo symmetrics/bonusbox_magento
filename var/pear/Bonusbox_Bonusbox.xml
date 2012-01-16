@@ -8,8 +8,8 @@
 For further information, check out our homepage www.bonusbox.me.</description>
    <license>MIT License</license>
    <license_uri>http://opensource.org/licenses/MIT</license_uri>
-   <release_version>0.9.1</release_version>
-   <api_version>0.9.1</api_version>
+   <release_version>1.1.0</release_version>
+   <api_version>1.1.0</api_version>
    <release_stability>stable</release_stability>
    <api_stability>stable</api_stability>
    <notes>Loyalty programme for success pages</notes>
