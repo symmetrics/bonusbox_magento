@@ -44,7 +44,7 @@
         	<salesrule_rule_condition_combine>
 	        	<observers>
                     <bonusbox>
-                        <class>bonusbox/salesrule_condition_bonusbox</class>
+                        <class>bonusbox/salesRule_condition_bonusbox</class>
                         <method>addConditions</method>
                     </bonusbox>
                 </observers>

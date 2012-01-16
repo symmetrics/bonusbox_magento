@@ -1,6 +1,9 @@
 <?php 
 ob_start();
-set_include_path(get_include_path() . PATH_SEPARATOR . $_SERVER['LD_LIBRARY_PATH'] . '\PEAR'); 
+if (isset($_SERVER['LD_LIBRARY_PATH']))
+{
+	set_include_path(get_include_path() . PATH_SEPARATOR . $_SERVER['LD_LIBRARY_PATH'] . '\PEAR');
+} 
 require_once 'PHPUnit/Autoload.php';
 
 $args = $_SERVER['argv'];

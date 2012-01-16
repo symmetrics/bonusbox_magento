@@ -1,7 +1,8 @@
 <?php
 $path = dirname(dirname($_SERVER['PHP_SELF']));
-if ($path == '.')
+if ($path == '.') // for process isolation
 {
+	
 	$includePaths = explode(PATH_SEPARATOR, get_include_path());
 	$search = '\app\code\local';
 	foreach ($includePaths as $path)

@@ -3,7 +3,7 @@ class Bonusbox_Bonusbox_Model_SalesRule_Condition_Bonusbox extends Mage_Rule_Mod
 {
 	public function addConditions(Varien_Event_Observer $observer)
 	{
-		$class = 'bonusbox/salesrule_condition_bonusbox';
+		$class = 'bonusbox/salesRule_condition_bonusbox';
 		$condition = Mage::getModel($class);
 		$condition->loadAttributeOptions();
 		foreach ($condition->getAttributeOption() as $attribute => $label)
