@@ -14,17 +14,13 @@ class Model_ConditionBonusboxTest extends MagentoTest
 	}
 	
 	
-	public function testConditions()
+	public function testCondition()
 	{
 		$conditions = $this->getConditions();
 		$this->assertInternalType('array', $conditions); 
 		$this->assertCount(1, $conditions); 
-	}
-	
-	
-	public function testConditionAttributes()
-	{
-		foreach ($this->getConditions() as $condition)
+		
+		foreach ($conditions as $condition)
 		{
 			list($class, $attribute) = explode('|', $condition['value']);
 			$condition = Mage::getModel($class);
