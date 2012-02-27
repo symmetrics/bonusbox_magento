@@ -5,6 +5,7 @@ class Model_ValidatorTest extends MagentoTest
 	{
 		$this->applyCoupon($quote = $this->getQuote(), $code = Stub_Model_Client_Coupons::SILVER);
 		$this->assertEquals($code, $quote->getCouponCode());
+ 		$this->assertEquals($code, $quote->getShippingAddress()->getDiscountDescription());
 		$this->assertContains(2, explode(',', $quote->getAppliedRuleIds()));
 	}
 
@@ -31,7 +32,8 @@ class Model_ValidatorTest extends MagentoTest
 	{
  		$this->applyCoupon($quote = $this->getQuote(), $code = 'Regular');
  		$this->assertEquals($code, $quote->getCouponCode());
-		$this->assertContains(4, explode(',', $quote->getAppliedRuleIds()));
+ 		$this->assertEquals($code, $quote->getShippingAddress()->getDiscountDescription());
+ 		$this->assertContains(4, explode(',', $quote->getAppliedRuleIds()));
 	}
 
 	
@@ -42,6 +44,7 @@ class Model_ValidatorTest extends MagentoTest
 	{
 		$this->applyCoupon($quote = $this->getQuote(), 'SpecialInvalidCode');
 		$this->assertEmpty($quote->getCouponCode());
+ 		$this->assertEmpty($quote->getShippingAddress()->getDiscountDescription());
 	}
 	
 	

@@ -62,10 +62,24 @@ class Bonusbox_Bonusbox_Model_SalesRule_Validator extends Mage_SalesRule_Model_V
     	{
     		if (in_array($rule->getId(), $appliedRuleIds) && $this->isBonusboxRule($rule))
     		{
-    			$this->_getAddress($item)->setCouponCode($this->getBonusboxCode());
+    			$this->_setCouponDataToAddress($item, $rule);
     			break;
     		}
     	}
     	return $this;
+    }
+    
+    /**
+     * Set coupon code and description to address
+     * @param Mage_Sales_Model_Quote_Item_Abstract $item
+     * @param Mage_SalesRule_Model_Rule $rule
+     */
+    protected function _setCouponDataToAddress($item, $rule)
+    {
+    	$address = $this->_getAddress($item);
+    	$address->setCouponCode($this->getBonusboxCode());
+    	$rule->setCouponCode($this->getBonusboxCode()); // used in _addDiscountDescription
+    	$this->_addDiscountDescription($address, $rule);
+    	$rule->setCouponCode(null);
     }
 }
