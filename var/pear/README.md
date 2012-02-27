@@ -1,5 +1,5 @@
 # Package Extens
- * Login in to http://magento.bonusbox.me/magento1420/admin
+ * Login in to http://magento.bonusbox.me/magento-head/admin
  * Go to System > Magento Connect > Package Extensions
  * Go to "Load local Package" and select Bonusbox_Bonusbox
  * Go to "Release Info" and increase the "Release Version" (you cannot upload an extension with the same version more than once)
