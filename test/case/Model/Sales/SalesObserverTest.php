@@ -52,6 +52,6 @@ class Model_SalesObserverTest extends MagentoTest
 	public function testSaveOrderWithoutCoupon()
 	{
 		$order = $this->placeOrder();
-		$this->assertEmpty($code, $order->getCouponCode());
+		$this->assertEmpty($order->getCouponCode());
 	}
 }

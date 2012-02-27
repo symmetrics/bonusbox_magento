@@ -1,4 +1,6 @@
 <?php 
+error_reporting(E_ALL | E_STRICT);
+
 ob_start();
 if (isset($_SERVER['LD_LIBRARY_PATH']))
 {

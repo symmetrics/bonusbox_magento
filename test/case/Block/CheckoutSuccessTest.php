@@ -24,4 +24,12 @@ class Block_CheckoutSuccessTest extends MagentoTest
 	{
 		$this->assertEmpty($this->render());
 	}
+	
+	
+	public function testInvalidSuccessPageData()
+	{
+		$block = Mage::getSingleton('core/layout')->createBlock('bonusbox/checkout_success');
+		Mage::helper('bonusbox')->getSession()->setSuccessPage(array('foo' => 'bar')); // no url
+		$this->assertEmpty($block->getSuccessPageUrl());  
+	}
 }

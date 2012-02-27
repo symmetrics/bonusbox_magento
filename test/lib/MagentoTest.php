@@ -74,9 +74,6 @@ class MagentoTest extends PHPUnit_Framework_TestCase
 		;
 		$payment = $quote->getPayment()->importData(array('method' => 'checkmo'));
 		$quote->setTotalsCollectedFlag(false);
-		
-		Mage::unregister('_singleton/salesrule/validator');
-		
 		return $quote;
 	}
 	

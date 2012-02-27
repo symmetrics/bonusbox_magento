@@ -23,7 +23,6 @@ class Bonusbox_Bonusbox_Block_Checkout_Success extends Mage_Core_Block_Template
 	public function getSuccessPageUrl()
 	{
 		$successPage = Mage::helper('bonusbox')->getSession()->getSuccessPage();
-		return $successPage['url'];
+		return isset($successPage['url']) ? $successPage['url'] : null;
 	}
-	
 }

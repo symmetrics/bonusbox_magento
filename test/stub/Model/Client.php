@@ -3,7 +3,7 @@ class Stub_Model_Client extends Bonusbox_Bonusbox_Model_Client
 {
 	protected $_resource = 'success_pages';
 	
-	public function request()
+	public function request($method = null)
 	{
 		switch ($this->method)
 		{

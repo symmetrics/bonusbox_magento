@@ -154,7 +154,7 @@ class Bonusbox_Bonusbox_Helper_Data extends Mage_Core_Helper_Data
 	    	if (!$session->getCustomerBadgeByCoupon($couponCode))
 	    	{
 		    	$response = Mage::getModel('bonusbox/client_coupons')->get($couponCode);
-		    	$session->setCustomerBadgeByCoupon($couponCode, $response['coupon']['user']['badge']['id']);
+	    		$session->setCustomerBadgeByCoupon($couponCode, isset($response['coupon']['user']['badge']['id']) ? $response['coupon']['user']['badge']['id'] : null);
 	    	}
 	    	return $session->getCustomerBadgeByCoupon($couponCode);
     	}

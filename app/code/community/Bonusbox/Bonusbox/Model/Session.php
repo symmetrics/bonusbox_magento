@@ -10,7 +10,7 @@ class Bonusbox_Bonusbox_Model_Session extends Mage_Core_Model_Session_Abstract
     public function getCustomerBadgeByCoupon($couponCode)
     {
     	$badges = $this->getCustomerBadgesByCoupon();
-    	return $badges[$couponCode];
+    	return isset($badges[$couponCode]) ? $badges[$couponCode] : null;
     }
     
     
