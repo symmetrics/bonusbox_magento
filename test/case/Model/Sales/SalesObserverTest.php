@@ -37,21 +37,39 @@ class Model_SalesObserverTest extends MagentoTest
 	}
 	
 	/**
-	 * Ensure that code is saved to order
+	 * Ensure that code and description are saved to order
 	 */
-	public function testSaveOrderCoupon()
+	public function testSaveOrderCouponBonusbox()
 	{
 		$this->applyCoupon($quote = $this->getQuote(), $code = Stub_Model_Client_Coupons::SILVER);
 		$order = $this->placeOrder($quote);
+		
+		$order = Mage::getModel('sales/order')->load($order->getId());
 		$this->assertEquals($code, $order->getCouponCode());
+		$this->assertEquals($code, $order->getDiscountDescription());
 	}
 
 
+	/**
+	 * Ensure that code and description are saved to order
+	 */
+	public function testSaveOrderCouponRegular()
+	{
+		$this->applyCoupon($quote = $this->getQuote(), $code = 'Regular');
+		$order = $this->placeOrder($quote);
+	
+		$order = Mage::getModel('sales/order')->load($order->getId());
+		$this->assertEquals($code, $order->getCouponCode());
+		$this->assertEquals($code, $order->getDiscountDescription());
+	}
+	
+	
 	/**
 	*/
 	public function testSaveOrderWithoutCoupon()
 	{
 		$order = $this->placeOrder();
+		$order = Mage::getModel('sales/order')->load($order->getId());
 		$this->assertEmpty($order->getCouponCode());
 	}
 }
