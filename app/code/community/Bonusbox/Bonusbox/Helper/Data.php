@@ -73,6 +73,7 @@ class Bonusbox_Bonusbox_Helper_Data extends Mage_Core_Helper_Data
 			}
 		}
 		else {
+			Mage::log('TEST ' . (string)$message);
 			if ($message instanceof Exception)
 			{
 				throw $message;
