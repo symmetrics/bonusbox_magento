@@ -10,13 +10,16 @@ class Bonusbox_Bonusbox_Model_SalesRule_Validator extends Mage_SalesRule_Model_V
 	 */
 	public function init($websiteId, $customerGroupId, $couponCode)
 	{
-		if (Mage::helper('bonusbox')->isValidBonusboxCouponCode($couponCode))
+		if (Mage::helper('bonusbox')->isEnabled() && $couponCode)
 		{
-			$this->setBonusboxCode($couponCode);			
-			$couponCode = null;
-		}
-		else {
-			$this->setBonusboxCode(null);
+			if (Mage::helper('bonusbox')->isValidBonusboxCouponCode($couponCode))
+			{
+				$this->setBonusboxCode($couponCode);
+				$couponCode = null;
+			}
+			else {
+				$this->setBonusboxCode(null);
+			}
 		}
 		return parent::init($websiteId, $customerGroupId, $couponCode);
 	}
@@ -26,7 +29,7 @@ class Bonusbox_Bonusbox_Model_SalesRule_Validator extends Mage_SalesRule_Model_V
 	 * @param Mage_SalesRule_Model_Rule $rule
 	 * @return boolean
 	 */
-	public function isBonusboxRule($rule)
+	private function isBonusboxRule($rule)
 	{
 		if ($this->getBonusboxCode() && !$rule->getCouponCode())
 		{
@@ -38,7 +41,7 @@ class Bonusbox_Bonusbox_Model_SalesRule_Validator extends Mage_SalesRule_Model_V
 	 * Check if $conditions contains a bonusbox condition and searches recursively if a combine condition is contained.
 	 * @param array $conditions
 	 */
-	public function hasBonusboxConditions($conditions)
+	private function hasBonusboxConditions($conditions)
 	{
 		foreach ($conditions as $condition)
 		{
@@ -57,6 +60,10 @@ class Bonusbox_Bonusbox_Model_SalesRule_Validator extends Mage_SalesRule_Model_V
     public function process(Mage_Sales_Model_Quote_Item_Abstract $item)
     {
     	parent::process($item);
+ 		if (!Mage::helper('bonusbox')->isEnabled() || !$this->getBonusboxCode())
+    	{
+    		return $this;
+    	}
     	$appliedRuleIds = explode(',', $item->getQuote()->getAppliedRuleIds());
     	foreach ($this->_getRules() as $rule)
     	{
@@ -74,7 +81,7 @@ class Bonusbox_Bonusbox_Model_SalesRule_Validator extends Mage_SalesRule_Model_V
      * @param Mage_Sales_Model_Quote_Item_Abstract $item
      * @param Mage_SalesRule_Model_Rule $rule
      */
-    protected function _setCouponDataToAddress($item, $rule)
+    private function _setCouponDataToAddress($item, $rule)
     {
     	$address = $this->_getAddress($item);
     	$address->setCouponCode($this->getBonusboxCode());

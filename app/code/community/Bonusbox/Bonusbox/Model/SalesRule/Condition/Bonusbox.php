@@ -3,6 +3,10 @@ class Bonusbox_Bonusbox_Model_SalesRule_Condition_Bonusbox extends Mage_Rule_Mod
 {
 	public function addConditions(Varien_Event_Observer $observer)
 	{
+		if (!Mage::helper('bonusbox')->isEnabled())
+		{
+			return;
+		}
 		$class = 'bonusbox/salesRule_condition_bonusbox';
 		$condition = Mage::getModel($class);
 		$condition->loadAttributeOptions();
@@ -73,6 +77,10 @@ class Bonusbox_Bonusbox_Model_SalesRule_Condition_Bonusbox extends Mage_Rule_Mod
      */
     public function validate(Varien_Object $object)
     {
+        if (!Mage::helper('bonusbox')->isEnabled())
+    	{
+    		return;
+    	}
     	$bonusbox = new Varien_Object();
     	$bonusbox->setBadge(Mage::helper('bonusbox')->getCustomerBadge($object->getQuote()));
         return parent::validate($bonusbox);
