@@ -51,7 +51,7 @@ class Bonusbox_Bonusbox_Model_Client extends Zend_Http_Client
 			->setUri($helper->getConfig('url') . $this->_resourceName)
 			->setHeaders('Accept', $helper->getConfig('accept_header'))
 			->setHeaders('Content-Type', self::CONTENT_TYPE)
-			->setAuth($helper->getKey($useSecretKey, $this->getStoreId())) // to collect all badges with multiple shops, request has ti be executed with different store context
+			->setAuth(trim($helper->getKey($useSecretKey, $this->getStoreId()))) // to collect all badges with multiple shops, request has ti be executed with different store context
 			->setRawData(null)
 		;
 		return $this;
