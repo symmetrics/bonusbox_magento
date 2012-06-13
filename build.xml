@@ -1,0 +1,131 @@
+<project name="job" default="build">
+    <target name="clean">
+        <delete dir="${basedir}/results" />
+    </target>
+
+    <target name="prepare">
+        <mkdir dir="${basedir}/results/logs" />
+        <mkdir dir="${basedir}/results/codebrowser" />
+        <mkdir dir="${basedir}/results/coverage" />
+        <mkdir dir="${basedir}/results/cpd" />
+        <mkdir dir="${basedir}/results/dependencies" />
+        <exec dir="${basedir}" executable="antexecpathfinder" failonerror="true" outputproperty="paths_to_scan">
+            <arg line="build/app/code/local/Symmetrics build/app/code/community/Symmetrics" />
+        </exec>
+    </target>
+
+    <target name="ignores">
+        <exec dir="${basedir}" executable="antexecfindwrapper" failonerror="false">
+            <arg line="${paths_to_scan} find -iname '.codingStandardsIgnore*'" />
+        </exec>
+        <exec dir="${basedir}" executable="antexecmultiwrapper" failonerror="false">
+            <arg line="${paths_to_scan} grep -Rin -C5 codingStandardsIgnore" />
+        </exec>
+    </target>
+
+    <target name="phpcs">
+        <exec dir="${basedir}" executable="antexecwrapper" failonerror="false" output="/dev/null">
+            <arg line="phpcs
+                       -n
+                       --extensions=php
+                       --standard=Symmetrics
+                       --tab-width=4
+                       --report=checkstyle
+                       --report-file=${basedir}/results/logs/checkstyle.xml
+                       ${paths_to_scan}" />
+        </exec>
+        <exec dir="${basedir}" executable="antexecwrapper" failonerror="true">
+            <arg line="phpcs
+                       -n
+                       --extensions=php
+                       --standard=Symmetrics
+                       --tab-width=4
+                       ${paths_to_scan}" />
+        </exec>
+    </target>
+
+    <target name="phpmd">
+        <exec dir="${basedir}" executable="antexecphpmdwrapper" failonerror="false">
+            <arg line="${paths_to_scan}
+                       phpmd
+                       xml
+                       symmetrics
+                       --reportfile ${basedir}/results/logs/pmd.xml" />
+        </exec>
+        <exec dir="${basedir}" executable="antexecphpmdwrapper" failonerror="true">
+            <arg line="${paths_to_scan}
+                       phpmd
+                       text
+                       symmetrics" />
+        </exec>
+    </target>
+
+    <target name="phpcpd">
+        <exec dir="${basedir}" executable="antexecwrapper" failonerror="true">
+            <arg line="phpcpd
+                       --log-pmd ${basedir}/results/logs/pmd-cpd.xml
+                       ${paths_to_scan}" />
+        </exec>
+        <exec dir="${basedir}/results/logs" executable="xsltproc" failonerror="false" output="${basedir}/results/cpd/index.html">
+            <arg line="${basedir}/.project/cpd.xsl ${basedir}/results/logs/pmd-cpd.xml" />
+        </exec>
+    </target>
+
+    <target name="pdepend">
+        <exec dir="${basedir}" executable="antexecpdependwrapper" failonerror="false">
+            <arg line="${paths_to_scan}
+                       pdepend
+                       --jdepend-xml=${basedir}/results/logs/jdepend.xml
+                       --jdepend-chart=${basedir}/results/dependencies/jdepend.svg
+                       --overview-pyramid=${basedir}/results/dependencies/pyramid.svg
+                       --optimization=best
+                       --exclude=results,tests" />
+        </exec>
+        <exec dir="${basedir}/results/dependencies" executable="cp" failonerror="false">
+            <arg line="${basedir}/.project/dependencies.html index.html" />
+        </exec>
+    </target>
+
+    <target name="phpdcd">
+        <exec dir="${basedir}" executable="antexecmultiwrapper" failonerror="false" output="${basedir}/results/logs/phpdcd.log">
+            <arg line="${paths_to_scan}
+                       phpdcd
+                       --suffixes php,inc" />
+        </exec>
+        <exec dir="${basedir}" executable="antexecmultiwrapper" failonerror="false">
+            <arg line="${paths_to_scan}
+                       phpdcd
+                       --suffixes php,inc" />
+        </exec>
+    </target>
+
+    <target name="phpcb">
+        <exec dir="${basedir}" executable="phpcb" failonerror="false">
+            <arg line="--log ${basedir}/results/logs
+                       --source ${basedir}
+                       --output ${basedir}/results/codebrowser" />
+        </exec>
+    </target>
+
+    <target name="phpunit">
+        <exec dir="${basedir}/tests" executable="phpunit" failonerror="false">
+            <arg line="--log-junit ${basedir}/results/logs/phpunit.xml
+                       --coverage-clover ${basedir}/results/logs/clover.xml
+                       --coverage-html ${basedir}/results/coverage" />
+        </exec>
+    </target>
+
+    <target name="parallel">
+        <parallel>
+            <antcall target="phpcs" />
+            <antcall target="phpmd" />
+            <antcall target="phpcpd" />
+            <antcall target="pdepend" />
+        </parallel>
+    </target>
+
+    <!-- <target name="test" depends="clean,prepare,parallel,phpunit,phpcb" /> -->
+    <!-- <target name="test" depends="clean,prepare,parallel,phpcb" /> -->
+    <target name="test" depends="clean,prepare,ignores,phpcs,phpmd,phpcpd,pdepend,phpcb" />
+</project>
+
