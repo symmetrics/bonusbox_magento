@@ -1,7 +1,31 @@
 <?xml version="1.0"?>
+<!--
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Open Software License (OSL 3.0)
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/osl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * @category  Bonusbox
+ * @package   Bonusbox_Bonusbox
+ * @author    symmetrics a CGI group brand <info@symmetrics.de>
+ * @author    Ngoc Anh Doan <ngoc-anh.doan@cgi.com>
+ * @copyright 2011-2012 BonusBox GmbH
+ * @license   http://www.opensource.org/licenses/mit-license.php  The MIT License (MIT)
+ * @link      http://bonusbox.me
+ * @link      http://github.com/bonusboxme/magento
+ */
+-->
 <config>
     <sections>
-       	<bonusbox translate="label" module="bonusbox">
+        <bonusbox translate="label" module="bonusbox">
             <label>Bonusbox</label>
             <tab>sales</tab>
             <sort_order>70</sort_order>
@@ -9,24 +33,24 @@
             <show_in_website>1</show_in_website>
             <show_in_store>1</show_in_store>
             <groups>
-                 <general>
-					<label>General</label>
+                <general>
+                    <label>General</label>
                     <sort_order>10</sort_order>
                     <show_in_default>1</show_in_default>
                     <show_in_website>1</show_in_website>
                     <show_in_store>1</show_in_store>       	  			
-       	  			<fields>
+                    <fields>
                         <enabled translate="label">
                             <label>Enabled</label>
                             <frontend_type>select</frontend_type>
                             <source_model>adminhtml/system_config_source_yesno</source_model>
                             <sort_order>10</sort_order>
-		                    <show_in_default>1</show_in_default>
-		                    <show_in_website>1</show_in_website>
-		                    <show_in_store>1</show_in_store>       	  			
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>       	  			
                         </enabled>
                         <live>
-							<label>Live Mode</label>
+                            <label>Live Mode</label>
                             <frontend_type>select</frontend_type>
                             <source_model>adminhtml/system_config_source_yesno</source_model>
                             <comment>Yes = Live Mode, No = Test Mode.</comment>
@@ -34,44 +58,44 @@
                             <show_in_default>1</show_in_default>
                             <show_in_website>1</show_in_website>
                             <show_in_store>1</show_in_store>
-						</live>
-						<live_public_key translate="label">
+                        </live>
+                        <live_public_key translate="label">
                             <label>Public Key (Live)</label>
                             <sort_order>30</sort_order>
                             <show_in_default>1</show_in_default>
                             <show_in_website>1</show_in_website>
                             <show_in_store>1</show_in_store>
                         </live_public_key>
-						<live_secret_key translate="label">
+                        <live_secret_key translate="label">
                             <label>Secret Key (Live)</label>
                             <sort_order>40</sort_order>
                             <show_in_default>1</show_in_default>
                             <show_in_website>1</show_in_website>
                             <show_in_store>1</show_in_store>
                         </live_secret_key>
-						<test_public_key translate="label">
+                        <test_public_key translate="label">
                             <label>Public Key (Test)</label>
                             <sort_order>50</sort_order>
                             <show_in_default>1</show_in_default>
                             <show_in_website>1</show_in_website>
                             <show_in_store>1</show_in_store>
                         </test_public_key>
-						<test_secret_key translate="label">
+                        <test_secret_key translate="label">
                             <label>Secret Key (Test)</label>
                             <sort_order>60</sort_order>
                             <show_in_default>1</show_in_default>
                             <show_in_website>1</show_in_website>
                             <show_in_store>1</show_in_store>
                         </test_secret_key>
-					</fields>        	 
-       	 		</general>
-       	 		<success_page>
-					<label>Checkout Success Page</label>
+                    </fields>        	 
+                </general>
+                <success_page>
+                    <label>Checkout Success Page</label>
                     <sort_order>20</sort_order>
                     <show_in_default>1</show_in_default>
                     <show_in_website>1</show_in_website>
                     <show_in_store>1</show_in_store>       	  			
-       	  			<fields>
+                    <fields>
                         <style_url translate="label">
                             <label>Stylesheet</label>
                             <comment>Provide the path relative to your skin path (e.g. "css/bonusbox.css").</comment>
@@ -79,9 +103,9 @@
                             <show_in_default>1</show_in_default>
                             <show_in_website>1</show_in_website>
                             <show_in_store>1</show_in_store>
-						</style_url>
-       	  			</fields>        	 
-       	 		</success_page>
+                        </style_url>
+                    </fields>        	 
+                </success_page>
             </groups>
         </bonusbox>
     </sections>
