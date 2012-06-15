@@ -10,7 +10,7 @@
         <mkdir dir="${basedir}/results/cpd" />
         <mkdir dir="${basedir}/results/dependencies" />
         <exec dir="${basedir}" executable="antexecpathfinder" failonerror="true" outputproperty="paths_to_scan">
-            <arg line="build/app/code/local/Bonusbox build/app/code/community/Bonusbox" />
+            <arg line="build" />
         </exec>
     </target>
 
