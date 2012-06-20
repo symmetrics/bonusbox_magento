@@ -14,12 +14,12 @@
  *
  * @category  Bonusbox
  * @package   Bonusbox_Bonusbox
- * @author    symmetrics a CGI Group brand <info@symmetrics.de>
+ * @author    symmetrics - a CGI Group brand <info@symmetrics.de>
  * @author    Ngoc Anh Doan <ngoc-anh.doan@cgi.com>
  * @copyright 2011-2012 BonusBox GmbH
  * @license   http://www.opensource.org/licenses/mit-license.php  The MIT License (MIT)
  * @link      http://bonusbox.me
- * @link      http://github.com/bonusboxme/magento
+ * @link      http://github.com/symmetrics/bonusbox_magento
  */
 
 /**
@@ -27,12 +27,12 @@
  *
  * @category  Bonusbox
  * @package   Bonusbox_Bonusbox
- * @author    symmetrics a CGI Group brand <info@symmetrics.de>
+ * @author    symmetrics - a CGI Group brand <info@symmetrics.de>
  * @author    Ngoc Anh Doan <ngoc-anh.doan@cgi.com>
  * @copyright 2011-2012 BonusBox GmbH
  * @license   http://www.opensource.org/licenses/mit-license.php  The MIT License (MIT)
  * @link      http://bonusbox.me
- * @link      http://github.com/bonusboxme/magento
+ * @link      http://github.com/symmetrics/bonusbox_magento
  */
 class Bonusbox_Bonusbox_Model_Client extends Zend_Http_Client
 {
@@ -203,9 +203,11 @@ class Bonusbox_Bonusbox_Model_Client extends Zend_Http_Client
                 }
             }
             require_once 'Bonusbox/Bonusbox/Exception.php';
-            throw new Bonusbox_Bonusbox_Exception("Invalid Response\n" . (string) $this . "\n\n" . (string) $response);
-        } catch (Exception $ex) {
-            Mage::helper('bonusbox')->handleError($ex);
+            throw new Bonusbox_Bonusbox_Exception(
+                'Invalid Response' . PHP_EOL . (string) $this . PHP_EOL . PHP_EOL . (string) $response
+            );
+        } catch (Exception $exc) {
+            Mage::helper('bonusbox')->handleError($exc);
         }
     }
 

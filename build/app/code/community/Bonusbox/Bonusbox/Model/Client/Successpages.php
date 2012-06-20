@@ -14,25 +14,25 @@
  *
  * @category  Bonusbox
  * @package   Bonusbox_Bonusbox
- * @author    symmetrics a CGI Group brand <info@symmetrics.de>
+ * @author    symmetrics - a CGI Group brand <info@symmetrics.de>
  * @author    Ngoc Anh Doan <ngoc-anh.doan@cgi.com>
  * @copyright 2011-2012 BonusBox GmbH
  * @license   http://www.opensource.org/licenses/mit-license.php  The MIT License (MIT)
  * @link      http://bonusbox.me
- * @link      http://github.com/bonusboxme/magento
+ * @link      http://github.com/symmetrics/bonusbox_magento
  */
 
 /**
- * Modell accessing create API
+ * Model accessing create API
  *
  * @category  Bonusbox
  * @package   Bonusbox_Bonusbox
- * @author    symmetrics a CGI Group brand <info@symmetrics.de>
+ * @author    symmetrics - a CGI Group brand <info@symmetrics.de>
  * @author    Ngoc Anh Doan <ngoc-anh.doan@cgi.com>
  * @copyright 2011-2012 BonusBox GmbH
  * @license   http://www.opensource.org/licenses/mit-license.php  The MIT License (MIT)
  * @link      http://bonusbox.me
- * @link      http://github.com/bonusboxme/magento
+ * @link      http://github.com/symmetrics/bonusbox_magento
  */
 class Bonusbox_Bonusbox_Model_Client_Successpages extends Bonusbox_Bonusbox_Model_Client
 {

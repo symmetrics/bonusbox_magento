@@ -14,12 +14,12 @@
  *
  * @category  Bonusbox
  * @package   Bonusbox_Bonusbox
- * @author    symmetrics a CGI Group brand <info@symmetrics.de>
+ * @author    symmetrics - a CGI Group brand <info@symmetrics.de>
  * @author    Ngoc Anh Doan <ngoc-anh.doan@cgi.com>
  * @copyright 2011-2012 BonusBox GmbH
  * @license   http://www.opensource.org/licenses/mit-license.php  The MIT License (MIT)
  * @link      http://bonusbox.me
- * @link      http://github.com/bonusboxme/magento
+ * @link      http://github.com/symmetrics/bonusbox_magento
  */
 
 require_once 'Mage/Checkout/controllers/OnepageController.php';
@@ -29,12 +29,12 @@ require_once 'Mage/Checkout/controllers/OnepageController.php';
  *
  * @category  Bonusbox
  * @package   Bonusbox_Bonusbox
- * @author    symmetrics a CGI Group brand <info@symmetrics.de>
+ * @author    symmetrics - a CGI Group brand <info@symmetrics.de>
  * @author    Ngoc Anh Doan <ngoc-anh.doan@cgi.com>
  * @copyright 2011-2012 BonusBox GmbH
  * @license   http://www.opensource.org/licenses/mit-license.php  The MIT License (MIT)
  * @link      http://bonusbox.me
- * @link      http://github.com/bonusboxme/magento
+ * @link      http://github.com/symmetrics/bonusbox_magento
  * @codeCoverageIgnore
  */
 class Bonusbox_Bonusbox_TestController extends Mage_Checkout_OnepageController

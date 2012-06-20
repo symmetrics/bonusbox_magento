@@ -14,12 +14,12 @@
  *
  * @category  Bonusbox
  * @package   Bonusbox_Bonusbox
- * @author    symmetrics a CGI group brand <info@symmetrics.de>
+ * @author    symmetrics - a CGI Group brand <info@symmetrics.de>
  * @author    Ngoc Anh Doan <ngoc-anh.doan@cgi.com>
  * @copyright 2011-2012 BonusBox GmbH
  * @license   http://www.opensource.org/licenses/mit-license.php  The MIT License (MIT)
  * @link      http://bonusbox.me
- * @link      http://github.com/bonusboxme/magento
+ * @link      http://github.com/symmetrics/bonusbox_magento
  */
 
 /**
@@ -27,12 +27,12 @@
  *
  * @category  Bonusbox
  * @package   Bonusbox_Bonusbox
- * @author    symmetrics a CGI group brand <info@symmetrics.de>
+ * @author    symmetrics - a CGI Group brand <info@symmetrics.de>
  * @author    Ngoc Anh Doan <ngoc-anh.doan@cgi.com>
  * @copyright 2011-2012 BonusBox GmbH
  * @license   http://www.opensource.org/licenses/mit-license.php  The MIT License (MIT)
  * @link      http://bonusbox.me
- * @link      http://github.com/bonusboxme/magento
+ * @link      http://github.com/symmetrics/bonusbox_magento
  */
 class Bonusbox_Bonusbox_Helper_Successpage extends Bonusbox_Bonusbox_Helper_Data
 {
@@ -44,7 +44,7 @@ class Bonusbox_Bonusbox_Helper_Successpage extends Bonusbox_Bonusbox_Helper_Data
     protected $_configSection = 'success_page';
 
     /**
-     * Checks if modulke is enabled and if keys are provided.
+     * Checks if module is enabled and if keys are provided.
      * 
      * @return bool
      */
@@ -56,14 +56,14 @@ class Bonusbox_Bonusbox_Helper_Successpage extends Bonusbox_Bonusbox_Helper_Data
     /**
      * Generates CSS URL
      * 
-     * @param bool $appendTimestampp Flag to append a timestamp to CSS resource
+     * @param bool $appendTimestamp Flag to append a timestamp to CSS resource
      * 
      * @return string
      */
-    public function getCssUrl($appendTimestampp = true)
+    public function getCssUrl($appendTimestamp = true)
     {
         $url = Mage::getDesign()->getSkinUrl($this->getConfig('style_url'), array());
-        if ($appendTimestampp) {
+        if ($appendTimestamp) {
             $filename = $this->getCssFile();
             if (file_exists($filename)) {
                 $url .= '?' . filemtime($filename);
