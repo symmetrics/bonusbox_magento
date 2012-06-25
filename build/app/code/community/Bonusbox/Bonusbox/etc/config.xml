@@ -153,12 +153,9 @@
                 <live_secret_key />
                 <test_public_key />
                 <test_secret_key />
-                <url><![CDATA[https://api.bonusbox.me/]]>
-                </url>
-                <accept_header><![CDATA[application/json,application/vnd.api;ver=1]]>
-                </accept_header>
-                <debug_email><![CDATA[no-reply@bonusbox.me]]>
-                </debug_email>
+                <url><![CDATA[https://api.bonusbox.me/]]></url>
+                <accept_header><![CDATA[application/json,application/vnd.api;ver=1]]></accept_header>
+                <debug_email><![CDATA[no-reply@bonusbox.me]]></debug_email>
             </general>
             <success_page>
                 <style_url>css/bonusbox.css</style_url>
