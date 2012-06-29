@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * Magento Enterprise Edition
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Magento Enterprise Edition License
+ * that is bundled with this package in the file LICENSE_EE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://www.magentocommerce.com/license/enterprise-edition
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category  Bonusbox
+ * @package   Bonusbox_Bonusbox
+ * @author    symmetrics - a CGI Group brand <info@symmetrics.de>
+ * @author    Ngoc Anh Doan <ngoc-anh.doan@cgi.com>
+ * @copyright 2011-2012 BonusBox GmbH
+ * @license   http://www.opensource.org/licenses/mit-license.php  The MIT License (MIT)
+ * @link      http://bonusbox.me
+ * @link      http://github.com/symmetrics/bonusbox_magento
+ */
+-->
+<config>
+    <acl>
+        <resources>
+            <admin>
+                <children>
+                    <system>
+                        <children>
+                            <config>
+                                <children>
+                                    <bonusbox translate="title" module="bonusbox">
+                                        <title>Bonusbox</title>
+                                    </bonusbox>
+                                </children>
+                            </config>
+                        </children>
+                    </system>
+                    
+                    <bonusbox>
+                        <title>Bonusbox</title>
+                        <sort_order>71</sort_order>
+                        <children>
+                            <bonusbox translate="title" module="bonusbox">
+                                <title>Config</title>
+                                <sort_order>0</sort_order>
+                            </bonusbox>
+                        </children>
+                    </bonusbox>
+                </children>
+            </admin>
+        </resources>
+    </acl>
+</config>

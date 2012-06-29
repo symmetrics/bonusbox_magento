@@ -104,35 +104,6 @@
     </frontend>
 	
     <adminhtml>
-        <acl>
-            <resources>
-                <admin>
-                    <children>
-                        <system>
-                            <children>
-                                <config>
-                                    <children>
-                                        <bonusbox translate="title" module="bonusbox">
-                                            <title>Bonusbox</title>
-                                        </bonusbox>
-                                    </children>
-                                </config>
-                            </children>
-                        </system>
-                        <bonusbox>
-                            <title>Bonusbox</title>
-                            <sort_order>71</sort_order>
-                            <children>
-                                <bonusbox translate="title" module="bonusbox">
-                                    <title>Config</title>
-                                    <sort_order>0</sort_order>
-                                </bonusbox>
-                            </children>
-                        </bonusbox>
-                    </children>
-                </admin>
-            </resources>
-        </acl>
         <translate>
             <modules>
                 <bonusbox_bonusbox>
