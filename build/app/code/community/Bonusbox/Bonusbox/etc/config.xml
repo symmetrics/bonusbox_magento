@@ -37,6 +37,7 @@
             <salesrule>
                 <rewrite>
                     <validator>Bonusbox_Bonusbox_Model_SalesRule_Validator</validator>
+                    <rule_condition_combine>Bonusbox_Bonusbox_Model_SalesRule_Rule_Condition_Combine</rule_condition_combine>
                 </rewrite>
             </salesrule>
         </models>
@@ -63,6 +64,10 @@
         </resources>
 
         <events>
+        <!--
+            BONBOX-12: Due to Magento EEs CustomerSegment module all additional
+                       conditions are deleted and replaced.
+            
             <salesrule_rule_condition_combine>
                 <observers>
                     <bonusbox>
@@ -71,6 +76,7 @@
                     </bonusbox>
                 </observers>
             </salesrule_rule_condition_combine>
+        -->
         	
             <sales_model_service_quote_submit_after>
                 <observers>

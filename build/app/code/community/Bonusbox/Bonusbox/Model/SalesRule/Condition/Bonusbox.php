@@ -39,6 +39,9 @@ class Bonusbox_Bonusbox_Model_SalesRule_Condition_Bonusbox extends Mage_Rule_Mod
     /**
      * Listener on 'salesrule_rule_condition_combine' to add additonal conditions.
      * 
+     * BONBOX-12: Moved listener logic for Magento EE compatibility overridden
+     *            Mage_SalesRule_Model_Rule_Condition_Combine class.
+     * 
      * @param Varien_Event_Observer $observer Event observer instance
      * 
      * @return void

@@ -28,6 +28,9 @@
         <Bonusbox_Bonusbox>
             <active>true</active>
             <codePool>community</codePool>
+            <depends>
+                <Mage_SalesRule />
+            </depends>
         </Bonusbox_Bonusbox>
     </modules>
 </config>
