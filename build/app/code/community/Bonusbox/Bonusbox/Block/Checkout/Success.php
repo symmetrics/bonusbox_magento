@@ -19,7 +19,7 @@
  * @copyright 2011-2012 BonusBox GmbH
  * @license   http://www.opensource.org/licenses/mit-license.php  The MIT License (MIT)
  * @link      http://bonusbox.me
- * @link      http://github.com/symmetrics/bonusbox_magento
+ * @link      http://github.com/bonusboxme/magento
  */
 
 /**
@@ -32,7 +32,7 @@
  * @copyright 2011-2012 BonusBox GmbH
  * @license   http://www.opensource.org/licenses/mit-license.php  The MIT License (MIT)
  * @link      http://bonusbox.me
- * @link      http://github.com/symmetrics/bonusbox_magento
+ * @link      http://github.com/bonusboxme/magento
  */
 class Bonusbox_Bonusbox_Block_Checkout_Success extends Mage_Core_Block_Template
 {

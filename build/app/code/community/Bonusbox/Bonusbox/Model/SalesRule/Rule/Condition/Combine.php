@@ -19,7 +19,7 @@
  * @copyright 2011-2012 BonusBox GmbH
  * @license   http://www.opensource.org/licenses/mit-license.php  The MIT License (MIT)
  * @link      http://bonusbox.me
- * @link      http://github.com/symmetrics/bonusbox_magento
+ * @link      http://github.com/bonusboxme/magento
  */
 
 /**
@@ -33,7 +33,7 @@
  * @copyright 2011-2012 BonusBox GmbH
  * @license   http://www.opensource.org/licenses/mit-license.php  The MIT License (MIT)
  * @link      http://bonusbox.me
- * @link      http://github.com/symmetrics/bonusbox_magento
+ * @link      http://github.com/bonusboxme/magento
  */
 class Bonusbox_Bonusbox_Model_SalesRule_Rule_Condition_Combine extends Mage_SalesRule_Model_Rule_Condition_Combine
 {

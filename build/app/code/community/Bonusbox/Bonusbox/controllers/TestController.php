@@ -19,7 +19,7 @@
  * @copyright 2011-2012 BonusBox GmbH
  * @license   http://www.opensource.org/licenses/mit-license.php  The MIT License (MIT)
  * @link      http://bonusbox.me
- * @link      http://github.com/symmetrics/bonusbox_magento
+ * @link      http://github.com/bonusboxme/magento
  */
 
 require_once 'Mage/Checkout/controllers/OnepageController.php';
@@ -34,7 +34,7 @@ require_once 'Mage/Checkout/controllers/OnepageController.php';
  * @copyright 2011-2012 BonusBox GmbH
  * @license   http://www.opensource.org/licenses/mit-license.php  The MIT License (MIT)
  * @link      http://bonusbox.me
- * @link      http://github.com/symmetrics/bonusbox_magento
+ * @link      http://github.com/bonusboxme/magento
  * @codeCoverageIgnore
  */
 class Bonusbox_Bonusbox_TestController extends Mage_Checkout_OnepageController

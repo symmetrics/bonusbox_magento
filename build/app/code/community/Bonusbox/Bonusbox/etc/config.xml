@@ -20,7 +20,7 @@
  * @copyright 2011-2012 BonusBox GmbH
  * @license   http://www.opensource.org/licenses/mit-license.php  The MIT License (MIT)
  * @link      http://bonusbox.me
- * @link      http://github.com/symmetrics/bonusbox_magento
+ * @link      http://github.com/bonusboxme/magento
  */
 -->
 <config>
@@ -64,20 +64,6 @@
         </resources>
 
         <events>
-        <!--
-            BONBOX-12: Due to Magento EEs CustomerSegment module all additional
-                       conditions are deleted and replaced.
-            
-            <salesrule_rule_condition_combine>
-                <observers>
-                    <bonusbox>
-                        <class>bonusbox/salesRule_condition_bonusbox</class>
-                        <method>addConditions</method>
-                    </bonusbox>
-                </observers>
-            </salesrule_rule_condition_combine>
-        -->
-        	
             <sales_model_service_quote_submit_after>
                 <observers>
                     <bonusbox>
